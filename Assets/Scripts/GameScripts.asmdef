@@ -1,7 +1,9 @@
 {
     "name": "GameScripts",
     "rootNamespace": "LD51",
-    "references": [],
+    "references": [
+        "GUID:476f7c6c6dfeed041b063446a926e656"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

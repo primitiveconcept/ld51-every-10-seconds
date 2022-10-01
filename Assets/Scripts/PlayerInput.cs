@@ -8,36 +8,44 @@ namespace LD51
     public partial class PlayerInput : MonoBehaviour
     {
         private static string MovementAxis = "Horizontal";
-        private static string InteractionsAxis = "Vertical";
+        private static string PickupButton = "Pickup";
+        private static string EnterDoorButton = "EnterDoor";
 
         public UnityEvent WhileLeftPressed;
         public UnityEvent WhileRightPressed;
         public UnityEvent OnPickupPressed;
         public UnityEvent OnEnterDoorPressed;
         
-        public static bool LeftHeld
+        
+        public bool LeftHeld
         {
             get { return Input.GetAxisRaw(MovementAxis) < 0; }
         }
 
-        public static bool RightHeld
+        public bool RightHeld
         {
             get { return Input.GetAxisRaw(MovementAxis) > 0; }
         }
 
-        public static bool Idle
+        public bool Idle
         {
             get { return Input.GetAxisRaw(MovementAxis) == 0; }
         }
 
-        public static bool PickupHeld
+        public bool PickupPressed
         {
-            get { return Input.GetAxisRaw(InteractionsAxis) < 0; }
+            get
+            {
+                return Input.GetButtonDown(PickupButton);
+            }
         }
 
-        public static bool EnterDoorHeld
+        public  bool EnterDoorPressed
         {
-            get { return Input.GetAxisRaw(InteractionsAxis) > 0; }
+            get
+            {
+                return Input.GetButtonDown(EnterDoorButton);
+            }
         }
 
 
@@ -48,19 +56,11 @@ namespace LD51
             else if (RightHeld)
                 this.WhileRightPressed.Invoke();
             
-        }
-
-
-        private static void DebugInputMapping()
-        {
-            if (LeftHeld)
-                Debug.Log("Left");
-            if (RightHeld)
-                Debug.Log("Right");
-            if (PickupHeld)
-                Debug.Log("Pick up");
-            if (EnterDoorHeld)
-                Debug.Log("Enter door");
+            if (EnterDoorPressed)
+                this.OnEnterDoorPressed.Invoke();
+            
+            if (PickupPressed)
+                this.OnPickupPressed.Invoke();
         }
     }
 }

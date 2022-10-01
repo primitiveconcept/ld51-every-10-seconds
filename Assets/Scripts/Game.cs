@@ -1,6 +1,7 @@
 namespace LD51
 {
     using UnityEngine;
+    using UnityEngine.U2D;
 
 
     [AddComponentMenu("_LD51/Game")]
@@ -11,9 +12,32 @@ namespace LD51
         [SerializeField]
         private GameConfig config;
 
+        private Camera _camera;
+        private PixelPerfectCamera _pixelPerfectCamera;
+
         public static GameConfig Config
         {
-            get { return _instance.config; }
+            get { return Instance.config; }
+        }
+
+        public static PixelPerfectCamera PixelPerfectCamera
+        {
+            get
+            {
+                if (Instance._pixelPerfectCamera == null)
+                    Instance._pixelPerfectCamera = Camera.main.GetComponent<PixelPerfectCamera>();
+                return Instance._pixelPerfectCamera;
+            }
+        }
+
+        public static Camera Camera
+        {
+            get
+            {
+                if (Instance._camera == null)
+                    Instance._camera = Camera.main;
+                return Instance._camera;
+            }
         }
 
         private static Game Instance
