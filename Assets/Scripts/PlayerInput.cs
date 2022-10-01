@@ -1,13 +1,20 @@
 namespace LD51
 {
     using UnityEngine;
+    using UnityEngine.Events;
 
 
+    [AddComponentMenu("_LD51/PlayerInput")]
     public partial class PlayerInput : MonoBehaviour
     {
         private static string MovementAxis = "Horizontal";
         private static string InteractionsAxis = "Vertical";
 
+        public UnityEvent WhileLeftPressed;
+        public UnityEvent WhileRightPressed;
+        public UnityEvent OnPickupPressed;
+        public UnityEvent OnEnterDoorPressed;
+        
         public static bool LeftHeld
         {
             get { return Input.GetAxisRaw(MovementAxis) < 0; }
@@ -36,8 +43,11 @@ namespace LD51
 
         public void Update()
         {
-            // Uncomment to check button inputs in the console.
-            //DebugInputMapping();
+            if (LeftHeld)
+                this.WhileLeftPressed.Invoke();
+            else if (RightHeld)
+                this.WhileRightPressed.Invoke();
+            
         }
 
 

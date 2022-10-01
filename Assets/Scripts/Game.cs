@@ -1,9 +1,9 @@
 namespace LD51
 {
-    using LD51;
     using UnityEngine;
 
 
+    [AddComponentMenu("_LD51/Game")]
     public partial class Game : MonoBehaviour
     {
         private static Game _instance;
