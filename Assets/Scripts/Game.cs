@@ -1,13 +1,30 @@
 namespace LD51
 {
-    using DefaultNamespace;
+    using LD51;
     using UnityEngine;
 
 
     public partial class Game : MonoBehaviour
     {
+        private static Game _instance;
+
         [SerializeField]
         private GameConfig config;
+
+        public static GameConfig Config
+        {
+            get { return _instance.config; }
+        }
+
+        private static Game Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = FindObjectOfType<Game>();
+                return _instance;
+            }
+        }
     }
 }
 

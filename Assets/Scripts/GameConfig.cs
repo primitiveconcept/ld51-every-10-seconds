@@ -1,4 +1,4 @@
-namespace DefaultNamespace
+namespace LD51
 {
     using UnityEngine;
 
@@ -12,7 +12,7 @@ namespace DefaultNamespace
 
 
 #if UNITY_EDITOR
-namespace DefaultNamespace
+namespace LD51
 {
     using UnityEditor;
 
