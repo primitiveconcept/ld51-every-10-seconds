@@ -1,5 +1,6 @@
 namespace LD51
 {
+    using System;
     using UnityEngine;
     using UnityEngine.Events;
 
@@ -10,6 +11,16 @@ namespace LD51
         public TriggerEvent OnEntered;
         public TriggerEvent OnExited;
         public TriggerEvent WhileInside;
+
+        public void OnValidate()
+        {
+            Collider2D collider = this.gameObject.GetComponent<Collider2D>();
+            if (collider != null
+                && collider.isTrigger != true)
+            {
+                collider.isTrigger = true;
+            }
+        }
 
 
         public void OnTriggerEnter2D(Collider2D other)
@@ -28,9 +39,30 @@ namespace LD51
         {
             this.WhileInside.Invoke(other);
         }
+
+
+        public void Teleport(Transform targetTransform)
+        {
+            if (targetTransform == null)
+            {
+                Debug.LogError("You forgot to assign a target transform for this teleport!");
+                return;
+            }
+
+            Room room = targetTransform.GetComponentInParent<Room>();
+            if (room == null)
+            {
+                Debug.LogError("You forgot to parent the target transform under a Room object!");
+            }
+
+            Vector3 targetPosition = targetTransform.position;
+            Game.PlayerCharacter.transform.position = targetPosition;
+            room.RefocusCamera(targetPosition);
+        }
     }
 
 
+    [Serializable]
     public class TriggerEvent : UnityEvent<Collider2D> {}
 }
 

@@ -51,7 +51,6 @@ namespace LD51
             Vector3 targetPosition = this.TargetObject.transform.position;
             player.transform.position = targetPosition;
             room.RefocusCamera(targetPosition);
-
         }
 
 
