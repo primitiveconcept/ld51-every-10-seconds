@@ -61,8 +61,11 @@ namespace LD51
                 return;
 
             PlayerCharacter player = col.GetComponent<PlayerCharacter>();
-            if (player != null)
+            if (player != null
+                && !player.JustEnteredDoor)
+            {
                 Activate(player);
+            }
         }
 
 
@@ -102,6 +105,8 @@ namespace LD51
 
             Vector3 targetPosition = this.TargetObject.transform.position;
             player.transform.position = targetPosition;
+            player.JustEnteredDoor = true;
+            player.StartCoroutine(player.ToggleDoorEnteredStatus());
             room.RefocusCamera(targetPosition);
         }
 

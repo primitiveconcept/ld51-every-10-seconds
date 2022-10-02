@@ -1,5 +1,6 @@
 namespace LD51
 {
+    using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
 
@@ -9,6 +10,8 @@ namespace LD51
         [SerializeField]
         private List<string> keyItems;
 
+        public bool JustEnteredDoor { get; set; }
+        
         private CapsuleCollider2D _playerCollider;
 
         public List<string> KeyItems
@@ -26,6 +29,13 @@ namespace LD51
             }
         }
 
+
+        public IEnumerator ToggleDoorEnteredStatus()
+        {
+            yield return new WaitForSeconds(0.1f);
+            this.JustEnteredDoor = false;
+        }
+        
 
         public void TryDoor()
         {

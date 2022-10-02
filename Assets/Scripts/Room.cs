@@ -101,8 +101,10 @@ namespace LD51
                             Door secondDoor = CreateDoor($"Door to {this.target.name}");
 
                             firstDoor.TargetObject = secondDoor.transform;
-
+                            firstDoor.ActivateOnContact = true;
+                            
                             secondDoor.TargetObject = firstDoor.transform;
+                            secondDoor.ActivateOnContact = true;
                             secondDoor.transform.SetParent(newRoom.transform);
                             secondDoor.transform.localPosition = Vector3.zero;
                             
@@ -149,11 +151,6 @@ namespace LD51
                 SpriteRenderer spriteRenderer = newDoorObject.AddComponent<SpriteRenderer>();
                 Sprite roomSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprites/_Debug/debug-door.png");
                 spriteRenderer.sprite = roomSprite;
-                /*
-                spriteRenderer.size = new Vector2(
-                    Game.PixelPerfectCamera.refResolutionX / 100f, 
-                    Game.PixelPerfectCamera.refResolutionY / 100f);
-                    */
                 spriteRenderer.sortingLayerName = "BackWall";
                 spriteRenderer.color = Color.clear;
 
