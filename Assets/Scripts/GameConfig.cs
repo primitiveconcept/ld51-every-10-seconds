@@ -6,7 +6,9 @@ namespace LD51
     [CreateAssetMenu()]
     public partial class GameConfig : ScriptableObject
     {
-        
+        [Header("Map Editing")]
+        public int MaxRoomsHorizontal = 6;
+        public float RoomPadding = 2; 
     }
 }
 

@@ -5,7 +5,7 @@ namespace LD51
     using UnityEngine.Events;
 
 
-    [AddComponentMenu("_L51/Door")]
+    [AddComponentMenu("_LD51/Door")]
     public partial class Door : MonoBehaviour
     {
         public string RequiredKey;

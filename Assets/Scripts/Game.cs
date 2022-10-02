@@ -12,6 +12,9 @@ namespace LD51
         [SerializeField]
         private GameConfig config;
 
+        [SerializeField]
+        private Transform world;
+
         private Camera _camera;
         private PixelPerfectCamera _pixelPerfectCamera;
 
@@ -62,6 +65,7 @@ namespace LD51
 namespace LD51
 {
     using UnityEditor;
+    using UnityEngine;
 
 
     partial class Game
