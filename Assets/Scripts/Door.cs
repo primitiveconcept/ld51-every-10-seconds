@@ -17,7 +17,13 @@ namespace LD51
         public void OnDrawGizmos()
         {
             Color previousColor = Gizmos.color;
-            Gizmos.color = Color.green;
+            
+            if (!string.IsNullOrEmpty(this.RequiredKey))
+                Gizmos.color = Color.red;
+            else if (this.ActivateOnContact)
+                Gizmos.color = Color.green;
+            else
+                Gizmos.color = Color.yellow;
             
             if (this.TargetObject != null)
             {
