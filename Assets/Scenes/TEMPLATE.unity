@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 891609297}
   ActivateOnContact: 1
   OnActivated:
@@ -358,6 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 512724648}
   ActivateOnContact: 1
   OnActivated:
@@ -546,6 +548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1252362501}
   ActivateOnContact: 1
   OnActivated:
@@ -676,6 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1110538370}
   ActivateOnContact: 1
   OnActivated:
@@ -1066,6 +1070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1823001944}
   ActivateOnContact: 1
   OnActivated:
@@ -1196,6 +1201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: battery
+  RequiredKeys: []
   TargetObject: {fileID: 1390359874}
   ActivateOnContact: 0
   OnActivated:
@@ -1326,6 +1332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 860106670}
   ActivateOnContact: 1
   OnActivated:
@@ -1688,6 +1695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1674129718}
   ActivateOnContact: 0
   OnActivated:
@@ -1818,6 +1826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1731485324}
   ActivateOnContact: 1
   OnActivated:
@@ -2482,6 +2491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 358624255}
   ActivateOnContact: 1
   OnActivated:
@@ -2670,6 +2680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 2140993114}
   ActivateOnContact: 1
   OnActivated:
@@ -3061,6 +3072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1905241383}
   ActivateOnContact: 1
   OnActivated:
@@ -3507,6 +3519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1536104444}
   ActivateOnContact: 1
   OnActivated:
@@ -3695,6 +3708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1522805502}
   ActivateOnContact: 0
   OnActivated:
@@ -3825,6 +3839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 211777424}
   ActivateOnContact: 1
   OnActivated:
@@ -3955,6 +3970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 447607879}
   ActivateOnContact: 1
   OnActivated:
@@ -4085,6 +4101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1980313123}
   ActivateOnContact: 1
   OnActivated:
@@ -4432,6 +4449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 523453925}
   ActivateOnContact: 1
   OnActivated:
@@ -4620,6 +4638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 602934943}
   ActivateOnContact: 1
   OnActivated:
@@ -4908,6 +4927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 846354984}
   ActivateOnContact: 1
   OnActivated:
@@ -5038,6 +5058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1718328633}
   ActivateOnContact: 1
   OnActivated:
@@ -5168,6 +5189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1567621099}
   ActivateOnContact: 1
   OnActivated:
@@ -5298,6 +5320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 362255122}
   ActivateOnContact: 1
   OnActivated:
@@ -5753,6 +5776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1591837675}
   ActivateOnContact: 1
   OnActivated:
@@ -5883,6 +5907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 683356134}
   ActivateOnContact: 1
   OnActivated:
@@ -6013,6 +6038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 16692559}
   ActivateOnContact: 1
   OnActivated:
@@ -6364,6 +6390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 387033157}
   ActivateOnContact: 1
   OnActivated:
@@ -7029,6 +7056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 602554233}
   ActivateOnContact: 1
   OnActivated:
@@ -7159,6 +7187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 599465709}
   ActivateOnContact: 1
   OnActivated:
@@ -7289,6 +7318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: emergency-power
+  RequiredKeys: []
   TargetObject: {fileID: 399782334}
   ActivateOnContact: 1
   OnActivated:
@@ -7404,6 +7434,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 28c3e6b12000643419be70d62b24705d, type: 2}
   world: {fileID: 801746682}
+  timerActions:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &605099812
 Transform:
   m_ObjectHideFlags: 0
@@ -7490,6 +7523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1196296114}
   ActivateOnContact: 0
   OnActivated:
@@ -7736,6 +7770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 503373008}
   ActivateOnContact: 1
   OnActivated:
@@ -8069,6 +8104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1324481588}
   ActivateOnContact: 1
   OnActivated:
@@ -8199,6 +8235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1229786117}
   ActivateOnContact: 1
   OnActivated:
@@ -8754,6 +8791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 858634899}
   ActivateOnContact: 1
   OnActivated:
@@ -8985,6 +9023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1124391103}
   ActivateOnContact: 1
   OnActivated:
@@ -9231,6 +9270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 416498524}
   ActivateOnContact: 1
   OnActivated:
@@ -9361,6 +9401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 816307773}
   ActivateOnContact: 1
   OnActivated:
@@ -9491,6 +9532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 89145428}
   ActivateOnContact: 1
   OnActivated:
@@ -9679,6 +9721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 11004859}
   ActivateOnContact: 1
   OnActivated:
@@ -9968,6 +10011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1546508538}
   ActivateOnContact: 1
   OnActivated:
@@ -10156,6 +10200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1297369870}
   ActivateOnContact: 0
   OnActivated:
@@ -10286,6 +10331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1768519547}
   ActivateOnContact: 1
   OnActivated:
@@ -10677,6 +10723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: attic-key
+  RequiredKeys: []
   TargetObject: {fileID: 1229786643}
   ActivateOnContact: 0
   OnActivated:
@@ -10923,6 +10970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 2040872005}
   ActivateOnContact: 1
   OnActivated:
@@ -11063,7 +11111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1770375833228365803, guid: af9e80ab4d8033d41a2a04fae8d2e7c9, type: 3}
       propertyPath: speed
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1770375834157691648, guid: af9e80ab4d8033d41a2a04fae8d2e7c9, type: 3}
       propertyPath: m_Sprite
@@ -11071,11 +11119,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 11961ab2dfb92ee469539fa74963010d, type: 3}
     - target: {fileID: 1770375834157691649, guid: af9e80ab4d8033d41a2a04fae8d2e7c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.83
+      value: 1.28
       objectReference: {fileID: 0}
     - target: {fileID: 1770375834157691649, guid: af9e80ab4d8033d41a2a04fae8d2e7c9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.39
+      value: 1.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af9e80ab4d8033d41a2a04fae8d2e7c9, type: 3}
@@ -11377,6 +11425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1408636618}
   ActivateOnContact: 0
   OnActivated:
@@ -11507,6 +11556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1558048288}
   ActivateOnContact: 1
   OnActivated:
@@ -11796,6 +11846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 33401495}
   ActivateOnContact: 1
   OnActivated:
@@ -12042,6 +12093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1403879525}
   ActivateOnContact: 1
   OnActivated:
@@ -12230,6 +12282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 831897501}
   ActivateOnContact: 1
   OnActivated:
@@ -12578,6 +12631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1494606437}
   ActivateOnContact: 1
   OnActivated:
@@ -12983,6 +13037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1610644109}
   ActivateOnContact: 1
   OnActivated:
@@ -13171,6 +13226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 647350122}
   ActivateOnContact: 0
   OnActivated:
@@ -13417,6 +13473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 728726897}
   ActivateOnContact: 1
   OnActivated:
@@ -13547,6 +13604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 979271290}
   ActivateOnContact: 0
   OnActivated:
@@ -13778,6 +13836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 27977457}
   ActivateOnContact: 1
   OnActivated:
@@ -14055,6 +14114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 909396411}
   ActivateOnContact: 0
   OnActivated:
@@ -14359,6 +14419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 724450286}
   ActivateOnContact: 1
   OnActivated:
@@ -14489,6 +14550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1532397029}
   ActivateOnContact: 1
   OnActivated:
@@ -15141,6 +15203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1119097519}
   ActivateOnContact: 1
   OnActivated:
@@ -15271,6 +15334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 2088582724}
   ActivateOnContact: 1
   OnActivated:
@@ -15401,6 +15465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1054782501}
   ActivateOnContact: 0
   OnActivated:
@@ -15907,6 +15972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1283749496}
   ActivateOnContact: 0
   OnActivated:
@@ -16297,6 +16363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1159239593}
   ActivateOnContact: 1
   OnActivated:
@@ -16485,6 +16552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: attic-key
+  RequiredKeys: []
   TargetObject: {fileID: 343551705}
   ActivateOnContact: 0
   OnActivated:
@@ -16673,6 +16741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1340912003}
   ActivateOnContact: 1
   OnActivated:
@@ -16803,6 +16872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1589877730}
   ActivateOnContact: 0
   OnActivated:
@@ -16933,6 +17003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 334110454}
   ActivateOnContact: 1
   OnActivated:
@@ -17165,6 +17236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 900425410}
   ActivateOnContact: 1
   OnActivated:
@@ -17295,6 +17367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1056028691}
   ActivateOnContact: 1
   OnActivated:
@@ -17425,6 +17498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1894651864}
   ActivateOnContact: 1
   OnActivated:
@@ -17613,6 +17687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 440079879}
   ActivateOnContact: 1
   OnActivated:
@@ -17845,6 +17920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1533221765}
   ActivateOnContact: 0
   OnActivated:
@@ -18076,6 +18152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 484816954}
   ActivateOnContact: 1
   OnActivated:
@@ -18365,6 +18442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1178491072}
   ActivateOnContact: 1
   OnActivated:
@@ -18495,6 +18573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1699265461}
   ActivateOnContact: 1
   OnActivated:
@@ -18725,6 +18804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 118950496}
   ActivateOnContact: 0
   OnActivated:
@@ -18971,6 +19051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1660513776}
   ActivateOnContact: 1
   OnActivated:
@@ -19217,6 +19298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 418461717}
   ActivateOnContact: 1
   OnActivated:
@@ -19347,6 +19429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 126047312}
   ActivateOnContact: 1
   OnActivated:
@@ -19593,6 +19676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 920332342}
   ActivateOnContact: 1
   OnActivated:
@@ -20223,6 +20307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 74912529}
   ActivateOnContact: 1
   OnActivated:
@@ -20469,6 +20554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 2112460869}
   ActivateOnContact: 1
   OnActivated:
@@ -20816,6 +20902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1560262532}
   ActivateOnContact: 1
   OnActivated:
@@ -20946,6 +21033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 282880284}
   ActivateOnContact: 1
   OnActivated:
@@ -21435,6 +21523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 366555875}
   ActivateOnContact: 1
   OnActivated:
@@ -21782,6 +21871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 993266212}
   ActivateOnContact: 1
   OnActivated:
@@ -22115,6 +22205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 2099871407}
   ActivateOnContact: 1
   OnActivated:
@@ -22565,6 +22656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1405010992}
   ActivateOnContact: 1
   OnActivated:
@@ -22753,6 +22845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 2056825210}
   ActivateOnContact: 1
   OnActivated:
@@ -22883,6 +22976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 1837964283}
   ActivateOnContact: 1
   OnActivated:
@@ -23187,6 +23281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredKey: 
+  RequiredKeys: []
   TargetObject: {fileID: 227609396}
   ActivateOnContact: 1
   OnActivated:
