@@ -1,4 +1,3 @@
-#if UNITY_EDITOR
 namespace LD51
 {
     using System.Linq;
@@ -24,7 +23,7 @@ namespace LD51
                 {
                     textureImporter.filterMode = FilterMode.Point;
                     textureImporter.spritePixelsPerUnit = 24;
-                    textureImporter.compressionQuality = 0;
+                    textureImporter.textureCompression = TextureImporterCompression.Uncompressed;
                     AssetDatabase.ImportAsset(path);
                     count++;
                 }
@@ -34,4 +33,3 @@ namespace LD51
         }
     }
 }
-#endif

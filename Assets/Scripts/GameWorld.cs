@@ -31,16 +31,22 @@ namespace LD51
                 
                 if (GUILayout.Button("Add Room"))
                 {
-                    GameObject newRoom = CreateRoom();
-                    Selection.activeGameObject = newRoom;
-                    EditorApplication.ExecuteMenuItem("Edit/Frame Selected");
+                    TextInputPopup.Show("Enter new room name",
+                        roomName =>
+                            {
+                                GameObject newRoom = CreateRoom(roomName);
+                                Selection.activeGameObject = newRoom;
+                                EditorApplication.ExecuteMenuItem("Edit/Frame Selected"); 
+                            });
                 }
             }
             
-            private GameObject CreateRoom()
+            private GameObject CreateRoom(string name)
             {
+                if (string.IsNullOrEmpty(name))
+                    name = "New Room";
                 GameWorld gameWorld = this.target as GameWorld;
-                GameObject newRoom = new GameObject("NewRoom");
+                GameObject newRoom = new GameObject(name);
 
                 // Add essential components
                 newRoom.AddComponent<Room>();
