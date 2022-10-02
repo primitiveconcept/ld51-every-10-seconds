@@ -78,6 +78,11 @@ namespace LD51
                 
                 GUILayout.Space(30f);
 
+                if (GUILayout.Button("Create Key Item Pickup"))
+                {
+                    CreateKeyItemPickup();
+                }
+                
                 if (GUILayout.Button("Create Door Pair"))
                 {
                     MultiButtonPopup.Show(
@@ -86,6 +91,27 @@ namespace LD51
                         ("To Existing Room", CreateDoorToExistingRoom)
                     );
                 }
+            }
+
+
+            private void CreateKeyItemPickup()
+            {
+                TextInputPopup.Show(
+                    "Enter key item name",
+                    name =>
+                        {
+                            Room room = this.target as Room;
+                            GameObject newItem = new GameObject(name);
+                            newItem.transform.SetParent(room.transform);
+                            newItem.transform.localPosition = Vector3.zero;
+                            SpriteRenderer spriteRenderer = newItem.AddComponent<SpriteRenderer>();
+                            Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprites/_Debug/debug-item.png");
+                            spriteRenderer.sprite = sprite;
+                            BoxCollider2D collider = newItem.AddComponent<BoxCollider2D>();
+                            collider.isTrigger = true;
+                            KeyItemPickup pickup = newItem.AddComponent<KeyItemPickup>();
+                            Selection.activeGameObject = newItem;
+                        });
             }
 
 

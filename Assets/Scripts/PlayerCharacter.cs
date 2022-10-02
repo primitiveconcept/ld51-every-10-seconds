@@ -61,6 +61,31 @@ namespace LD51
 
             Debug.Log("No door found");
         }
+
+
+        public void TryPickUpItem()
+        {
+            RaycastHit2D[] touchedTriggers = new RaycastHit2D[3];
+            this.PlayerCollider.Cast(
+                direction: Vector2.zero, 
+                results: touchedTriggers, 
+                distance: 0, 
+                ignoreSiblingColliders: true);
+            foreach (RaycastHit2D trigger in touchedTriggers)
+            {
+                if (trigger.transform == null)
+                    continue;
+                
+                IPickup item = trigger.transform.GetComponent<IPickup>();
+                if (item != null)
+                {
+                    item.Pickup(this);
+                    return;
+                }
+            }
+
+            Debug.Log("No pickup found");
+        }
     }
 }
 

@@ -75,6 +75,7 @@ namespace LD51
                 && !player.KeyItems.Contains(this.RequiredKey))
             {
                 DenyEntry();
+                return;
             }
             
             // If has an OnActivated event assigned, do that instead of entering.
