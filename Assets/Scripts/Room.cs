@@ -155,7 +155,7 @@ namespace LD51
                     Game.PixelPerfectCamera.refResolutionY / 100f);
                     */
                 spriteRenderer.sortingLayerName = "BackWall";
-                spriteRenderer.enabled = false;
+                spriteRenderer.color = Color.clear;
 
                 BoxCollider2D collider = newDoorObject.AddComponent<BoxCollider2D>();
                 collider.isTrigger = true;
