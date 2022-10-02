@@ -1,6 +1,8 @@
 namespace LD51
 {
+    using System.Collections;
     using UnityEngine;
+    using UnityEngine.Events;
     using UnityEngine.U2D;
 
 
@@ -15,8 +17,19 @@ namespace LD51
         [SerializeField]
         private Transform world;
 
+        [SerializeField]
+        private UnityEvent timerActions;
+
         private Camera _camera;
         private PixelPerfectCamera _pixelPerfectCamera;
+
+        private bool timerShouldRepeat = true;
+
+        public static bool TimerShouldRepeat
+        {
+            get { return Instance.timerShouldRepeat; }
+            set { Instance.timerShouldRepeat = value; }
+        }
 
         public static GameConfig Config
         {
@@ -55,6 +68,28 @@ namespace LD51
                 if (_instance == null)
                     _instance = FindObjectOfType<Game>();
                 return _instance;
+            }
+        }
+
+
+        public void Awake()
+        {
+            this.timerShouldRepeat = true;
+        }
+
+
+        public void Start()
+        {
+            StartCoroutine(TimerCoroutine());
+        }
+
+
+        private IEnumerator TimerCoroutine()
+        {
+            while (this.timerShouldRepeat)
+            {
+                yield return new WaitForSeconds(this.config.TimerInterval);
+                this.timerActions.Invoke();
             }
         }
     }

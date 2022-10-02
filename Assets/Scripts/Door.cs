@@ -9,6 +9,7 @@ namespace LD51
     public partial class Door : MonoBehaviour
     {
         public string RequiredKey;
+        public string[] RequiredKeys;
         public Transform TargetObject;
         public bool ActivateOnContact;
         public UnityEvent OnActivated;
@@ -78,14 +79,8 @@ namespace LD51
                 return;
             }
             
-            // If has an OnActivated event assigned, do that instead of entering.
-            if (this.OnActivated.GetPersistentEventCount() > 0)
-            {
-                this.OnActivated.Invoke();
-                return;
-            }
-            
-            
+            this.OnActivated.Invoke();
+
             Enter(player);
         }
 
@@ -134,6 +129,7 @@ namespace LD51
             public override void OnInspectorGUI()
             {
                 base.OnInspectorGUI();
+                
             }
         }
     }

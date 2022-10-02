@@ -1,13 +1,24 @@
 namespace LD51
 {
+    using System;
     using System.Linq;
     using UnityEditor;
     using UnityEngine;
 
 
-    public class SpriteImporter
+    public class SpriteImporter : AssetPostprocessor
     {
-        [MenuItem("Assets/Conform All Sprite Assets")]
+        public void OnPreprocessTexture()
+        {
+            if (System.IO.Path.GetExtension(this.assetPath).ToLower().Contains("png")
+                && this.assetPath.Contains("Assets/Sprites/"))
+            {
+                ConformTexture(this.assetPath);    
+            }
+        }
+
+
+        [MenuItem("Tools/Conform All Sprite Assets")]
         private static void ConformSpriteTextures()
         {
             int count = 0;
@@ -18,18 +29,25 @@ namespace LD51
             
             foreach (string path in paths)
             {
-                TextureImporter textureImporter = AssetImporter.GetAtPath(path) as TextureImporter;
-                if (textureImporter != null)
-                {
-                    textureImporter.filterMode = FilterMode.Point;
-                    textureImporter.spritePixelsPerUnit = 24;
-                    textureImporter.textureCompression = TextureImporterCompression.Uncompressed;
-                    AssetDatabase.ImportAsset(path);
-                    count++;
-                }
+                ConformTexture(path);
+                count++;
             }
 
             Debug.Log($"Processed and conformed {count} sprites.");
+        }
+
+
+        private static void ConformTexture(string path)
+        {
+            TextureImporter textureImporter = AssetImporter.GetAtPath(path) as TextureImporter;
+            if (textureImporter != null)
+            {
+                textureImporter.filterMode = FilterMode.Point;
+                textureImporter.spritePixelsPerUnit = 24;
+                textureImporter.textureCompression = TextureImporterCompression.Uncompressed;
+                textureImporter.mipmapEnabled = false;
+                AssetDatabase.ImportAsset(path);
+            }
         }
     }
 }

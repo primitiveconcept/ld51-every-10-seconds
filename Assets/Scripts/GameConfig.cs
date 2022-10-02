@@ -6,6 +6,9 @@ namespace LD51
     [CreateAssetMenu()]
     public partial class GameConfig : ScriptableObject
     {
+        [Header("Global Game Settings")]
+        public float TimerInterval = 10f;
+        
         [Header("Map Editing")]
         public int MaxRoomsHorizontal = 6;
         public float RoomPadding = 2; 

@@ -31,6 +31,12 @@ namespace LD51
             }
         }
 
+        public float Speed
+        {
+            get { return this.speed; }
+            set { this.speed = value; }
+        }
+
 
         public void FixedUpdate()
         {
