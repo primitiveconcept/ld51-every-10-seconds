@@ -77,25 +77,73 @@ namespace LD51
                 base.OnInspectorGUI();
                 
                 GUILayout.Space(30f);
-                
+
                 if (GUILayout.Button("Create Door Pair"))
                 {
-                    Door firstDoor = CreateDoor("Door to Next Room", -1f);
-                    Door secondDoor = CreateDoor($"Door Back to {this.target.name}", 1f);
-
-                    firstDoor.TargetObject = secondDoor.transform;
-                    secondDoor.TargetObject = firstDoor.transform;
-                    Selection.activeGameObject = firstDoor.gameObject;
+                    MultiButtonPopup.Show(
+                        "What type of door?",
+                        ("To New Room", CreateDoorToNewRoom),
+                        ("To Existing Room", CreateDoorToExistingRoom)
+                    );
                 }
             }
 
 
-            private Door CreateDoor(string name, float xPosition)
+            private void CreateDoorToNewRoom()
+            {
+                GameWorld gameWorld = FindObjectOfType<GameWorld>();
+                TextInputPopup.Show("Enter new room name",
+                    roomName =>
+                        {
+                            GameObject newRoom = GameWorld.Inspector.CreateRoom(gameWorld, roomName);
+                            
+                            Door firstDoor = CreateDoor($"Door to {newRoom.name}");
+                            Door secondDoor = CreateDoor($"Door to {this.target.name}");
+
+                            firstDoor.TargetObject = secondDoor.transform;
+
+                            secondDoor.TargetObject = firstDoor.transform;
+                            secondDoor.transform.SetParent(newRoom.transform);
+                            secondDoor.transform.localPosition = Vector3.zero;
+                            
+                            Selection.activeGameObject = secondDoor.gameObject;
+                        });
+            }
+
+
+            private void CreateDoorToExistingRoom()
+            {
+                
+                TextInputPopup.Show("Enter existing room name",
+                    roomName =>
+                        {
+                            GameObject existingRoom = GameObject.Find(roomName);
+                            if (existingRoom == null)
+                            {
+                                Debug.LogError($"Could not find room with name {existingRoom}!");
+                                return;
+                            }
+                            
+                            Door firstDoor = CreateDoor($"Door to {roomName}");
+                            Door secondDoor = CreateDoor($"Door to {this.target.name}");
+
+                            firstDoor.TargetObject = secondDoor.transform;
+
+                            secondDoor.TargetObject = firstDoor.transform;
+                            secondDoor.transform.SetParent(existingRoom.transform);
+                            secondDoor.transform.localPosition = Vector3.zero;
+                            
+                            Selection.activeGameObject = secondDoor.gameObject;
+                        });
+            }
+
+
+            private Door CreateDoor(string name)
             {
                 Room room = this.target as Room;
                 GameObject newDoorObject = new GameObject(name);
                 newDoorObject.transform.SetParent(room.transform);
-                newDoorObject.transform.localPosition = new Vector2(xPosition, -2.5f);
+                newDoorObject.transform.localPosition = new Vector2(0, -2.5f);
                 
                 
                 SpriteRenderer spriteRenderer = newDoorObject.AddComponent<SpriteRenderer>();

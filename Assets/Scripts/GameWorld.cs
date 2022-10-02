@@ -34,18 +34,18 @@ namespace LD51
                     TextInputPopup.Show("Enter new room name",
                         roomName =>
                             {
-                                GameObject newRoom = CreateRoom(roomName);
+                                GameWorld gameWorld = target as GameWorld;
+                                GameObject newRoom = CreateRoom(gameWorld, roomName);
                                 Selection.activeGameObject = newRoom;
                                 EditorApplication.ExecuteMenuItem("Edit/Frame Selected"); 
                             });
                 }
             }
             
-            private GameObject CreateRoom(string name)
+            public static GameObject CreateRoom(GameWorld gameWorld, string name)
             {
                 if (string.IsNullOrEmpty(name))
                     name = "New Room";
-                GameWorld gameWorld = this.target as GameWorld;
                 GameObject newRoom = new GameObject(name);
 
                 // Add essential components
@@ -69,7 +69,7 @@ namespace LD51
             }
 
 
-            private void RepositionRoom(GameObject newRoom, GameWorld gameWorld)
+            private static void RepositionRoom(GameObject newRoom, GameWorld gameWorld)
             {
                 Bounds sceneBounds = GetSceneBounds();
                 //float newX = sceneBounds.max.x + (Game.PixelPerfectCamera.refResolutionX / 100f) + Game.Config.RoomPadding;
@@ -89,7 +89,7 @@ namespace LD51
             }
 
 
-            private GameObject CreateWall(
+            private static GameObject CreateWall(
                 string name,
                 Transform room, 
                 float xPosition)
@@ -104,7 +104,7 @@ namespace LD51
             }
 
 
-            private Bounds GetSceneBounds()
+            private static Bounds GetSceneBounds()
             {
                 Bounds sceneBounds = new Bounds();
                 foreach (Renderer r in GameObject.FindObjectsOfType<Renderer>())
