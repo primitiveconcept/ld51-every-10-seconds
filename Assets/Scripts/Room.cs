@@ -75,6 +75,43 @@ namespace LD51
             public override void OnInspectorGUI()
             {
                 base.OnInspectorGUI();
+                
+                GUILayout.Space(30f);
+                
+                if (GUILayout.Button("Create Door Pair"))
+                {
+                    Door firstDoor = CreateDoor("Door to Next Room", -1f);
+                    Door secondDoor = CreateDoor($"Door Back to {this.target.name}", 1f);
+
+                    firstDoor.TargetObject = secondDoor.transform;
+                    secondDoor.TargetObject = firstDoor.transform;
+                    Selection.activeGameObject = firstDoor.gameObject;
+                }
+            }
+
+
+            private Door CreateDoor(string name, float xPosition)
+            {
+                Room room = this.target as Room;
+                GameObject newDoorObject = new GameObject(name);
+                newDoorObject.transform.SetParent(room.transform);
+                newDoorObject.transform.localPosition = new Vector2(xPosition, -2.5f);
+                
+                
+                SpriteRenderer spriteRenderer = newDoorObject.AddComponent<SpriteRenderer>();
+                Sprite roomSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprites/_Debug/debug-door.png");
+                spriteRenderer.sprite = roomSprite;
+                /*
+                spriteRenderer.size = new Vector2(
+                    Game.PixelPerfectCamera.refResolutionX / 100f, 
+                    Game.PixelPerfectCamera.refResolutionY / 100f);
+                    */
+                spriteRenderer.sortingLayerName = "BackWall";
+
+                BoxCollider2D collider = newDoorObject.AddComponent<BoxCollider2D>();
+                collider.isTrigger = true;
+                    
+                return newDoorObject.AddComponent<Door>();
             }
         }
     }
