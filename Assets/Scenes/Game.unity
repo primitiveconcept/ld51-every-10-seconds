@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a6eaf788a14ee383eb6f1364723830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 4
   moveDirection: {x: 0, y: 0}
   externalForce: {x: 0, y: 0}
 --- !u!114 &22258043
