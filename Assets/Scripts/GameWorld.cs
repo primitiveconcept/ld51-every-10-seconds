@@ -33,6 +33,7 @@ namespace LD51
                 {
                     GameObject newRoom = CreateRoom();
                     Selection.activeGameObject = newRoom;
+                    EditorApplication.ExecuteMenuItem("Edit/Frame Selected");
                 }
             }
             
