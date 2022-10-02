@@ -30,9 +30,18 @@ namespace LD51
         public void RefocusCamera(Vector2 targetPosition)
         {
             Transform cameraTransform = Game.Camera.transform;
+            Vector3 roomPosition = this.transform.position;
+            cameraTransform.position = new Vector3(
+                roomPosition.x,
+                roomPosition.y,
+                cameraTransform.position.z);
+            
+            /* Will need to get this working to allow for scrolling.
+            Transform cameraTransform = Game.Camera.transform;
             
             float verticalExtent = Game.Camera.orthographicSize;
             float horizontalExtent = verticalExtent * Screen.width / Screen.height;
+            Debug.Log($"Vertical: {verticalExtent}, Horizontal: {horizontalExtent}");
 
             float leftBound = this.Bounds.min.x + horizontalExtent;
             float rightBound = this.Bounds.max.x - horizontalExtent;
@@ -45,6 +54,7 @@ namespace LD51
                 cameraTransform.position.z);
 
             cameraTransform.position = finalCameraPosition;
+            */
         }
     }
 }

@@ -2,6 +2,7 @@ namespace LD51
 {
     using UnityEngine;
     using UnityEngine.Events;
+    using UnityEngine.Serialization;
 
 
     [AddComponentMenu("_LD51/PlayerInput")]
@@ -9,12 +10,13 @@ namespace LD51
     {
         private static string MovementAxis = "Horizontal";
         private static string PickupButton = "Pickup";
-        private static string EnterDoorButton = "EnterDoor";
+        private static string InteractButton = "Interact";
 
         public UnityEvent WhileLeftPressed;
         public UnityEvent WhileRightPressed;
         public UnityEvent OnPickupPressed;
-        public UnityEvent OnEnterDoorPressed;
+        [FormerlySerializedAs("OnEnterDoorPressed")]
+        public UnityEvent OnInteractPressed;
         
         
         public bool LeftHeld
@@ -40,26 +42,26 @@ namespace LD51
             }
         }
 
-        public  bool EnterDoorPressed
+        public  bool InteractPressed
         {
             get
             {
-                return Input.GetButtonDown(EnterDoorButton);
+                return Input.GetButtonDown(InteractButton);
             }
         }
 
 
         public void Update()
         {
-            if (LeftHeld)
+            if (this.LeftHeld)
                 this.WhileLeftPressed.Invoke();
-            else if (RightHeld)
+            else if (this.RightHeld)
                 this.WhileRightPressed.Invoke();
             
-            if (EnterDoorPressed)
-                this.OnEnterDoorPressed.Invoke();
+            if (this.InteractPressed)
+                this.OnInteractPressed.Invoke();
             
-            if (PickupPressed)
+            if (this.PickupPressed)
                 this.OnPickupPressed.Invoke();
         }
     }
@@ -81,12 +83,6 @@ namespace LD51
             public override void OnInspectorGUI()
             {
                 base.OnInspectorGUI();
-
-                GUILayout.Space(30);
-                if (GUILayout.Button("Edit Control Bindings"))
-                {
-                    UnityEditor.SettingsService.OpenProjectSettings("Project/Input Manager");
-                }
             }
         }
     }

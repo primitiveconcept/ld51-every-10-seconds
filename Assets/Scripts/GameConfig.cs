@@ -15,6 +15,7 @@ namespace LD51
 namespace LD51
 {
     using UnityEditor;
+    using UnityEngine;
 
 
     partial class GameConfig
@@ -25,6 +26,12 @@ namespace LD51
             public override void OnInspectorGUI()
             {
                 base.OnInspectorGUI();
+                
+                GUILayout.Space(30);
+                if (GUILayout.Button("Edit Control Bindings"))
+                {
+                    UnityEditor.SettingsService.OpenProjectSettings("Project/Input Manager");
+                }
             }
         }
     }

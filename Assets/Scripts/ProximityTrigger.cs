@@ -12,6 +12,18 @@ namespace LD51
         public TriggerEvent OnExited;
         public TriggerEvent WhileInside;
 
+
+        public void OnDrawGizmos()
+        {
+            Collider2D collider = this.gameObject.GetComponent<Collider2D>();
+            if (collider != null)
+            {
+                if (collider is BoxCollider2D)
+                    Gizmos.DrawWireCube(collider.bounds.center, collider.bounds.extents);
+            }
+        }
+
+
         public void OnValidate()
         {
             Collider2D collider = this.gameObject.GetComponent<Collider2D>();
