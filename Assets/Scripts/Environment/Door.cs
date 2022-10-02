@@ -15,8 +15,22 @@ namespace LD51
         public UnityEvent OnActivated;
 
 
+        public Vector2 GetTargetPosition()
+        {
+            Collider2D collider = this.TargetObject.GetComponent<Collider2D>();
+            if (collider == null)
+                return this.TargetObject.transform.position;
+
+            return new Vector2(
+                collider.bounds.center.x,
+                collider.bounds.min.y);
+        }
+        
+        
         public void OnDrawGizmos()
         {
+            Vector2 endpoint = GetTargetPosition();
+            
             Color previousColor = Gizmos.color;
             
             if (!string.IsNullOrEmpty(this.RequiredKey))
@@ -28,8 +42,8 @@ namespace LD51
             
             if (this.TargetObject != null)
             {
-                Debug.DrawLine(this.transform.position, this.TargetObject.position, Color.green);
-                Gizmos.DrawWireSphere(this.TargetObject.position, 0.25f);
+                Debug.DrawLine(this.transform.position, endpoint, Color.green);
+                Gizmos.DrawWireSphere(endpoint, 0.25f);
                 
             }
             
@@ -87,6 +101,8 @@ namespace LD51
 
         private void Enter(PlayerCharacter player)
         {
+            
+            
             if (this.TargetObject == null)
             {
                 Debug.LogError("You forgot to assign TargetObject for this door!");
@@ -99,8 +115,11 @@ namespace LD51
                 Debug.LogError("You forgot to parent the TargetObject under a Room object!");
             }
 
-            Vector3 targetPosition = this.TargetObject.transform.position;
-            player.transform.position = targetPosition;
+            float playerFeetOffset = player.PlayerCollider.bounds.extents.y;
+            Vector3 targetPosition = GetTargetPosition();
+            player.transform.position = new Vector2(
+                targetPosition.x,
+                targetPosition.y + playerFeetOffset);
             player.JustEnteredDoor = true;
             player.StartCoroutine(player.ToggleDoorEnteredStatus());
             room.RefocusCamera(targetPosition);
