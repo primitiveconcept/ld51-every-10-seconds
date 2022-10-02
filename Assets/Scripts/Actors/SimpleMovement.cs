@@ -2,6 +2,9 @@ namespace LD51
 {
     using System;
     using UnityEngine;
+    using UnityEngine.Events;
+    using UnityEngine.Serialization;
+
 
     [AddComponentMenu("_LD51/SimpleMovement")]
     public partial class SimpleMovement : MonoBehaviour
@@ -15,11 +18,19 @@ namespace LD51
         [SerializeField]
         private Vector2 externalForce;
 
-        private Rigidbody2D _rigidbody2D;
-        private bool isLocked;
+        [SerializeField]
+        private UnityEvent OnStartMovingLeft;
+        
+        [SerializeField]
+        private UnityEvent OnStartMovingRight;
 
-        private bool shouldMove;
-        private bool wasMoving;
+        [SerializeField]
+        private UnityEvent OnStopMoving;
+
+
+        private Vector2 previousVelocity;
+        private Rigidbody2D _rigidbody2D;
+        
 
         private Rigidbody2D Rigidbody2D
         {
@@ -45,6 +56,28 @@ namespace LD51
             ApplyMovement(totalMovement);
             
             this.moveDirection = Vector2.zero;
+        }
+
+
+        public void Update()
+        {
+            Vector2 velocity = this.Rigidbody2D.velocity;
+            
+            if (this.previousVelocity.x == 0)
+            {
+                if (velocity.x < 0)
+                    this.OnStartMovingLeft.Invoke();
+                else if (velocity.x > 0)
+                    this.OnStartMovingRight.Invoke();
+            }
+            
+            else if (this.previousVelocity.x != 0
+                     && velocity.x == 0)
+            {
+                this.OnStopMoving.Invoke();
+            }
+
+            this.previousVelocity = this.Rigidbody2D.velocity;
         }
 
 

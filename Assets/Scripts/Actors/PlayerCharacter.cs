@@ -13,6 +13,7 @@ namespace LD51
         public bool JustEnteredDoor { get; set; }
         
         private CapsuleCollider2D _playerCollider;
+        private Animator _playerAnimator;
 
         public List<string> KeyItems
         {
@@ -28,6 +29,8 @@ namespace LD51
                 return this._playerCollider;
             }
         }
+
+        
 
 
         public IEnumerator ToggleDoorEnteredStatus()
