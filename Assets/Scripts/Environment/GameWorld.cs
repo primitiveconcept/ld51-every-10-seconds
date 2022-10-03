@@ -3,7 +3,7 @@ namespace LD51
     using UnityEngine;
 
 
-    [AddComponentMenu("_LD51/GameWorld")]
+    [AddComponentMenu("_LD51/Game World")]
     public partial class GameWorld : MonoBehaviour
     {
         

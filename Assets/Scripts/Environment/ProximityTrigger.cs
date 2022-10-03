@@ -5,7 +5,7 @@ namespace LD51
     using UnityEngine.Events;
 
 
-    [AddComponentMenu("_LD51/ProximityTrigger")]
+    [AddComponentMenu("_LD51/Proximity Trigger")]
     public partial class ProximityTrigger : MonoBehaviour
     {
         public TriggerEvent OnEntered;

@@ -5,6 +5,7 @@ namespace LD51
     using UnityEngine;
 
 
+    [AddComponentMenu("_LD51/Player Character")]
     public partial class PlayerCharacter : MonoBehaviour
     {
         [SerializeField]

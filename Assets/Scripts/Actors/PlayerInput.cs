@@ -5,7 +5,7 @@ namespace LD51
     using UnityEngine.Serialization;
 
 
-    [AddComponentMenu("_LD51/PlayerInput")]
+    [AddComponentMenu("_LD51/Player Input")]
     public partial class PlayerInput : MonoBehaviour
     {
         private static string MovementAxis = "Horizontal";

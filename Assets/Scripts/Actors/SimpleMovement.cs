@@ -1,12 +1,10 @@
 namespace LD51
 {
-    using System;
     using UnityEngine;
     using UnityEngine.Events;
-    using UnityEngine.Serialization;
+    
 
-
-    [AddComponentMenu("_LD51/SimpleMovement")]
+    [AddComponentMenu("_LD51/Simple Movement")]
     public partial class SimpleMovement : MonoBehaviour
     {
         [SerializeField]
@@ -14,26 +12,29 @@ namespace LD51
 
         [SerializeField]
         private bool locked;
-        
+
         [SerializeField]
         private Vector2 moveDirection;
 
         [SerializeField]
         private Vector2 externalForce;
-
-        [SerializeField]
-        private UnityEvent OnStartMovingLeft;
-        
-        [SerializeField]
-        private UnityEvent OnStartMovingRight;
-
-        [SerializeField]
-        private UnityEvent OnStopMoving;
-
-
-        private Vector2 previousVelocity;
         private Rigidbody2D _rigidbody2D;
-        
+        private CharacterAnimation characterAnimation;
+
+        private Vector2 facingDirection;
+
+        private CharacterAnimation CharacterAnimation
+        {
+            get
+            {
+#if UNITY_EDITOR
+                // Lazy instantiation for Editor tools only -- otherwise, handled in Awake
+                if (this.characterAnimation == null)
+                    this.characterAnimation = GetComponentInChildren<CharacterAnimation>(includeInactive: true);
+#endif
+                return this.characterAnimation;
+            }
+        }
 
         private Rigidbody2D Rigidbody2D
         {
@@ -58,6 +59,22 @@ namespace LD51
         }
 
 
+        public void Awake()
+        {
+            this.characterAnimation = GetComponentInChildren<CharacterAnimation>(includeInactive: true);
+        }
+
+
+        public void Update()
+        {
+            if (this.Rigidbody2D.velocity.x != 0)
+                this.facingDirection = this.Rigidbody2D.velocity.normalized;
+            
+            if (this.CharacterAnimation != null)
+                UpdateAnimator();
+        }
+
+
         public void FixedUpdate()
         {
             Vector2 totalMovement = this.moveDirection * this.speed; 
@@ -68,25 +85,11 @@ namespace LD51
         }
 
 
-        public void Update()
+        private void UpdateAnimator()
         {
             Vector2 velocity = this.Rigidbody2D.velocity;
-            
-            if (this.previousVelocity.x == 0)
-            {
-                if (velocity.x < 0)
-                    this.OnStartMovingLeft.Invoke();
-                else if (velocity.x > 0)
-                    this.OnStartMovingRight.Invoke();
-            }
-            
-            else if (this.previousVelocity.x != 0
-                     && velocity.x == 0)
-            {
-                this.OnStopMoving.Invoke();
-            }
-
-            this.previousVelocity = this.Rigidbody2D.velocity;
+            this.CharacterAnimation.IsMoving = velocity.x != 0;
+            this.CharacterAnimation.FlipX = this.facingDirection.x < 0;
         }
 
 

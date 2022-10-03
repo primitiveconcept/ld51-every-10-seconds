@@ -3,6 +3,7 @@ namespace LD51
     using UnityEngine;
 
 
+    [AddComponentMenu("_LD51/Items/Key Item")]
     public partial class KeyItemPickup : MonoBehaviour, IPickup
     {
         public void Pickup(PlayerCharacter player)

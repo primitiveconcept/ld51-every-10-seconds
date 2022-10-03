@@ -3,6 +3,7 @@ namespace LD51
     using UnityEngine;
 
 
+    [AddComponentMenu("_LD51/Hiding Spot")]
     public partial class HidingSpot : MonoBehaviour
     {
         public PlayerCharacter PlayerCharacter;
