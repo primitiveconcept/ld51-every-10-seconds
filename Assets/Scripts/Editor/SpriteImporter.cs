@@ -42,11 +42,20 @@ namespace LD51
             TextureImporter textureImporter = AssetImporter.GetAtPath(path) as TextureImporter;
             if (textureImporter != null)
             {
-                textureImporter.filterMode = FilterMode.Point;
-                textureImporter.spritePixelsPerUnit = 24;
-                textureImporter.textureCompression = TextureImporterCompression.Uncompressed;
-                textureImporter.mipmapEnabled = false;
-                AssetDatabase.ImportAsset(path);
+                bool needsChanges =
+                    textureImporter.filterMode != FilterMode.Point
+                    || textureImporter.spritePixelsPerUnit != 24f
+                    || textureImporter.textureCompression != TextureImporterCompression.Uncompressed
+                    || textureImporter.mipmapEnabled != false;
+
+                if (needsChanges)
+                {
+                    textureImporter.filterMode = FilterMode.Point;
+                    textureImporter.spritePixelsPerUnit = 24f;
+                    textureImporter.textureCompression = TextureImporterCompression.Uncompressed;
+                    textureImporter.mipmapEnabled = false;
+                    AssetDatabase.ImportAsset(path);
+                }
             }
         }
     }
