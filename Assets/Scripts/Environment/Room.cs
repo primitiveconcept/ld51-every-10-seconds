@@ -27,7 +27,7 @@ namespace LD51
         }
 
 
-        public void RefocusCamera(Vector2 targetPosition)
+        public void RefocusCamera()
         {
             Transform cameraTransform = Game.Camera.transform;
             Vector3 roomPosition = this.transform.position;
@@ -55,6 +55,25 @@ namespace LD51
 
             cameraTransform.position = finalCameraPosition;
             */
+        }
+
+
+        public static Room GetClosest(Vector2 position)
+        {
+            Room[] allRooms = FindObjectsOfType<Room>();
+            Room closestRoom = null;
+            float leastDistance = Mathf.Infinity;
+            foreach (Room room in allRooms)
+            {
+                float distance = Vector2.Distance(room.transform.position, position);
+                if (distance < leastDistance)
+                {
+                    leastDistance = distance;
+                    closestRoom = room;
+                }
+            }
+
+            return closestRoom;
         }
     }
 }

@@ -122,7 +122,7 @@ namespace LD51
                 targetPosition.y + playerFeetOffset);
             player.JustEnteredDoor = true;
             player.StartCoroutine(player.ToggleDoorEnteredStatus());
-            room.RefocusCamera(targetPosition);
+            room.RefocusCamera();
         }
 
 

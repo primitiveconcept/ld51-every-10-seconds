@@ -80,6 +80,10 @@ namespace LD51
 
         public void Start()
         {
+            PlayerCharacter player = FindObjectOfType<PlayerCharacter>();
+            Room startingRoom = Room.GetClosest(player.transform.position);
+            startingRoom.RefocusCamera();
+            
             StartCoroutine(TimerCoroutine());
         }
 

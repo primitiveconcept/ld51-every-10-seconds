@@ -38,7 +38,7 @@ AnimatorState:
   m_Motion: {fileID: 7400000, guid: 58621c33fd710e643a8b2cd863bf3052, type: 2}
   m_Tag: 
   m_SpeedParameter: 
-  m_MirrorParameter: 
+  m_MirrorParameter: ShouldMirror
   m_CycleOffsetParameter: 
   m_TimeParameter: 
 --- !u!91 &9100000
@@ -169,6 +169,6 @@ AnimatorState:
   m_Motion: {fileID: 7400000, guid: f9d4880459c8697498951436289d4c33, type: 2}
   m_Tag: 
   m_SpeedParameter: 
-  m_MirrorParameter: 
+  m_MirrorParameter: ShouldMirror
   m_CycleOffsetParameter: 
   m_TimeParameter: 
