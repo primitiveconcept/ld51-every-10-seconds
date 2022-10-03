@@ -13,6 +13,9 @@ namespace LD51
         private float speed = 10f;
 
         [SerializeField]
+        private bool locked;
+        
+        [SerializeField]
         private Vector2 moveDirection;
 
         [SerializeField]
@@ -46,6 +49,12 @@ namespace LD51
         {
             get { return this.speed; }
             set { this.speed = value; }
+        }
+
+        public bool Locked
+        {
+            get { return this.locked; }
+            set { this.locked = value; }
         }
 
 
@@ -94,12 +103,17 @@ namespace LD51
 
         public void MoveLeft()
         {
+            if (this.locked)
+                return;
+            
             this.moveDirection = Vector2.left;
         }
 
 
         public void MoveRight()
         {
+            if (this.locked)
+                return;
             this.moveDirection = Vector2.right;
         }
 

@@ -42,7 +42,7 @@ namespace LD51
             }
         }
 
-        public  bool InteractPressed
+        public bool InteractPressed
         {
             get
             {
@@ -50,7 +50,7 @@ namespace LD51
             }
         }
 
-
+        
         public void Update()
         {
             if (this.LeftHeld)

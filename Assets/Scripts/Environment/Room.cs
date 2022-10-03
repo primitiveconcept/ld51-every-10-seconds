@@ -78,6 +78,11 @@ namespace LD51
                 
                 GUILayout.Space(30f);
 
+                if (GUILayout.Button("Create Hiding Spot"))
+                {
+                    CreateHidingSpot();
+                }
+                
                 if (GUILayout.Button("Create Key Item Pickup"))
                 {
                     CreateKeyItemPickup();
@@ -91,6 +96,24 @@ namespace LD51
                         ("To Existing Room", CreateDoorToExistingRoom)
                     );
                 }
+            }
+
+
+            private void CreateHidingSpot()
+            {
+                Room room = this.target as Room;
+                GameObject newItem = new GameObject("Hiding Spot");
+                newItem.transform.SetParent(room.transform);
+                newItem.transform.localPosition = Vector3.zero;
+                
+                SpriteRenderer spriteRenderer = newItem.AddComponent<SpriteRenderer>();
+                Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprites/_Debug/debug-hiding-spot.png");
+                spriteRenderer.sprite = sprite;
+                BoxCollider2D collider = newItem.AddComponent<BoxCollider2D>();
+                collider.isTrigger = true;
+                HidingSpot hidingSpot = newItem.AddComponent<HidingSpot>();
+                Selection.activeGameObject = newItem;
+                        
             }
 
 
