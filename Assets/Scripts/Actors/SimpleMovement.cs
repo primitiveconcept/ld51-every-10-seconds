@@ -87,6 +87,12 @@ namespace LD51
 
         private void UpdateAnimator()
         {
+            if (this.CharacterAnimation.Animator == null
+                || this.CharacterAnimation.Animator.runtimeAnimatorController == null)
+            {
+                return;
+            }
+            
             Vector2 velocity = this.Rigidbody2D.velocity;
             this.CharacterAnimation.IsMoving = velocity.x != 0;
             this.CharacterAnimation.FlipX = this.facingDirection.x < 0;

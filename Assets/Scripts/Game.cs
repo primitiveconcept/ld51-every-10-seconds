@@ -20,11 +20,18 @@ namespace LD51
         [SerializeField]
         private UnityEvent timerActions;
 
+        private bool lightsOff;
         private Camera _camera;
         private PixelPerfectCamera _pixelPerfectCamera;
 
         private bool timerShouldRepeat = true;
 
+        public static bool LightsOff
+        {
+            get { return Instance.lightsOff; }
+            set { Instance.lightsOff = value; }
+        }
+        
         public static bool TimerShouldRepeat
         {
             get { return Instance.timerShouldRepeat; }
@@ -72,6 +79,12 @@ namespace LD51
         }
 
 
+        public void ToggleLights()
+        {
+            LightsOff = !LightsOff;
+        }
+        
+        
         public void Awake()
         {
             this.timerShouldRepeat = true;
@@ -80,11 +93,17 @@ namespace LD51
 
         public void Start()
         {
-            PlayerCharacter player = FindObjectOfType<PlayerCharacter>();
+            PlayerCharacter player = FindPlayer();
             Room startingRoom = Room.GetClosest(player.transform.position);
             startingRoom.RefocusCamera();
             
             StartCoroutine(TimerCoroutine());
+        }
+
+
+        public static PlayerCharacter FindPlayer()
+        {
+            return FindObjectOfType<PlayerCharacter>();
         }
 
 

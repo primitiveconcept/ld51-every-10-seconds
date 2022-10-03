@@ -65,6 +65,13 @@ namespace LD51
                 
                 CharacterAnimation parameters = this.target as CharacterAnimation;
 
+                if (parameters.Animator == null
+                    || parameters.Animator.runtimeAnimatorController == null)
+                {
+                    return;
+                }
+                    
+
                 EditorGUILayout.Toggle(nameof(CharacterAnimation.IsMoving), parameters.IsMoving);
                 EditorGUILayout.Toggle(nameof(CharacterAnimation.FlipX), parameters.FlipX);
             }

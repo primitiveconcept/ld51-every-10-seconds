@@ -16,8 +16,7 @@ namespace LD51
 
         private SimpleMovement _movement;
         private Animator _playerAnimator;
-
-        private CapsuleCollider2D _playerCollider;
+        private Collider2D _collider;
         private SpriteRenderer _spriteRenderer;
 
         public bool JustEnteredDoor { get; set; }
@@ -37,13 +36,13 @@ namespace LD51
             }
         }
 
-        public CapsuleCollider2D PlayerCollider
+        public Collider2D Collider
         {
             get
             {
-                if (this._playerCollider == null)
-                    this._playerCollider = GetComponent<CapsuleCollider2D>();
-                return this._playerCollider;
+                if (this._collider == null)
+                    this._collider = GetComponent<Collider2D>();
+                return this._collider;
             }
         }
 
@@ -98,7 +97,7 @@ namespace LD51
         public void TryDoor()
         {
             RaycastHit2D[] touchedTriggers = new RaycastHit2D[3];
-            this.PlayerCollider.Cast(
+            this.Collider.Cast(
                 direction: Vector2.zero, 
                 results: touchedTriggers, 
                 distance: 0, 
@@ -121,7 +120,7 @@ namespace LD51
         public void TryPickUpItem()
         {
             RaycastHit2D[] touchedTriggers = new RaycastHit2D[3];
-            this.PlayerCollider.Cast(
+            this.Collider.Cast(
                 direction: Vector2.zero, 
                 results: touchedTriggers, 
                 distance: 0, 

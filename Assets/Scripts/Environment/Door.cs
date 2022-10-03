@@ -115,7 +115,7 @@ namespace LD51
                 Debug.LogError("You forgot to parent the TargetObject under a Room object!");
             }
 
-            float playerFeetOffset = player.PlayerCollider.bounds.extents.y;
+            float playerFeetOffset = player.Collider.bounds.extents.y;
             Vector3 targetPosition = GetTargetPosition();
             player.transform.position = new Vector2(
                 targetPosition.x,

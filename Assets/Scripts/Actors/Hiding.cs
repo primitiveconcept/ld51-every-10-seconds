@@ -6,11 +6,10 @@ namespace LD51
     [AddComponentMenu("_LD51/Hiding")]
     public partial class Hiding : MonoBehaviour
     {
+        private PlayerCharacter _player;
         private HidingSpot currentHidingSpot;
         private float originalMovementSpeed;
         private Vector2 originalPlayerPosition;
-        
-        private PlayerCharacter _player;
 
         private PlayerCharacter Player
         {
@@ -26,14 +25,31 @@ namespace LD51
         {
             get { return this.currentHidingSpot != null; }
         }
-        
+
+
+        public void Update()
+        {
+            if (!this.IsHiding)
+                return;
+
+            Bounds playerBounds = this.Player.Collider.bounds;
+            Bounds hidingSpotBounds = this.currentHidingSpot.Collider.bounds;
+
+            if (playerBounds.max.x < hidingSpotBounds.min.x
+                || playerBounds.min.x > hidingSpotBounds.max.x)
+            {
+                UnHide();
+            }
+        }
+
+
         public void TryHide()
         {
             if (this.IsHiding)
                 return;
             
             RaycastHit2D[] touchedTriggers = new RaycastHit2D[3];
-            this.Player.PlayerCollider.Cast(
+            this.Player.Collider.Cast(
                 direction: Vector2.zero, 
                 results: touchedTriggers, 
                 distance: 0, 
@@ -53,22 +69,7 @@ namespace LD51
             }
         }
 
-        
-        public void Update()
-        {
-            if (!this.IsHiding)
-                return;
 
-            Bounds playerBounds = this.Player.PlayerCollider.bounds;
-            Bounds hidingSpotBounds = this.currentHidingSpot.Collider.bounds;
-
-            if (playerBounds.max.x < hidingSpotBounds.min.x
-                || playerBounds.min.x > hidingSpotBounds.max.x)
-            {
-                UnHide();
-            }
-        }
-        
         public void UnHide()
         {
             if (!this.IsHiding)
@@ -87,7 +88,8 @@ namespace LD51
             this.Player.Movement.Speed = this.originalMovementSpeed;
             this.currentHidingSpot = null;
         }
-        
+
+
         public void Hide(HidingSpot hidingSpot)
         {
             // Center player on object
