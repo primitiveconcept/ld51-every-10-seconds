@@ -115,12 +115,10 @@ namespace LD51
                     return;
                 }
             }
-
-            Debug.Log("No door found");
         }
 
 
-        public void ToggleHide()
+        public void TryHide()
         {
             RaycastHit2D[] touchedTriggers = new RaycastHit2D[3];
             this.PlayerCollider.Cast(
@@ -134,25 +132,39 @@ namespace LD51
                     continue;
                 
                 HidingSpot hidingSpot = trigger.transform.GetComponent<HidingSpot>();
-                if (hidingSpot != null)
+                if (hidingSpot != null
+                    && !hidingSpot.InUse)
                 {
-                    if (!hidingSpot.InUse)
-                    {
-                        Debug.Log($"Hiding behind: {hidingSpot.name}");
-                        hidingSpot.Hide(this);
-                        
-                    }
-                    else
-                    {
-                        Debug.Log($"Stopped hiding behind: {hidingSpot.name}");
-                        hidingSpot.UnHide(this);
-                    }
-                    
+                    Debug.Log($"Hiding behind: {hidingSpot.name}");
+                    hidingSpot.Hide(this);
                     return;
                 }
             }
+        }
 
-            Debug.Log("Nothing to hide behind.");
+
+        public void TryUnhide()
+        {
+            RaycastHit2D[] touchedTriggers = new RaycastHit2D[3];
+            this.PlayerCollider.Cast(
+                direction: Vector2.zero, 
+                results: touchedTriggers, 
+                distance: 0, 
+                ignoreSiblingColliders: true);
+            foreach (RaycastHit2D trigger in touchedTriggers)
+            {
+                if (trigger.transform == null)
+                    continue;
+                
+                HidingSpot hidingSpot = trigger.transform.GetComponent<HidingSpot>();
+                if (hidingSpot != null
+                    && hidingSpot.InUse)
+                {
+                    Debug.Log($"Stopped hiding behind: {hidingSpot.name}");
+                    hidingSpot.UnHide(this);
+                    return;
+                }
+            }
         }
 
 

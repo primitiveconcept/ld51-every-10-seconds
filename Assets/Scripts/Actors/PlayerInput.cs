@@ -15,8 +15,8 @@ namespace LD51
         public UnityEvent WhileLeftPressed;
         public UnityEvent WhileRightPressed;
         public UnityEvent OnPickupPressed;
-        [FormerlySerializedAs("OnEnterDoorPressed")]
         public UnityEvent OnInteractPressed;
+        public UnityEvent OnInteractReleased;
         
         
         public bool LeftHeld
@@ -50,6 +50,14 @@ namespace LD51
             }
         }
 
+        public bool InteractReleased
+        {
+            get
+            {
+                return Input.GetButtonUp(InteractButton);
+            }
+        }
+
         
         public void Update()
         {
@@ -60,6 +68,8 @@ namespace LD51
             
             if (this.InteractPressed)
                 this.OnInteractPressed.Invoke();
+            if (this.InteractReleased)
+                this.OnInteractReleased.Invoke();
             
             if (this.PickupPressed)
                 this.OnPickupPressed.Invoke();
