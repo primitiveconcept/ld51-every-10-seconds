@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1770375833228365802}
   - component: {fileID: 1770375833228365800}
   - component: {fileID: 1770375833228365803}
+  - component: {fileID: 5304339969493297660}
   - component: {fileID: 1770375833228365801}
   m_Layer: 0
   m_Name: Player
@@ -122,8 +123,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1770375833228365802}
-        m_TargetAssemblyTypeName: LD51.PlayerCharacter, GameScripts
+      - m_Target: {fileID: 5304339969493297660}
+        m_TargetAssemblyTypeName: LD51.Hiding, GameScripts
         m_MethodName: TryHide
         m_Mode: 1
         m_Arguments:
@@ -137,9 +138,9 @@ MonoBehaviour:
   OnInteractReleased:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1770375833228365802}
-        m_TargetAssemblyTypeName: LD51.PlayerCharacter, GameScripts
-        m_MethodName: TryUnhide
+      - m_Target: {fileID: 5304339969493297660}
+        m_TargetAssemblyTypeName: LD51.Hiding, GameScripts
+        m_MethodName: UnHide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -234,6 +235,18 @@ MonoBehaviour:
           m_StringArgument: player-idle
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5304339969493297660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770375833228365799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8ca140f97d4c19881c78f5a20d53cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!70 &1770375833228365801
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

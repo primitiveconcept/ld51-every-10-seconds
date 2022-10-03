@@ -117,57 +117,6 @@ namespace LD51
             }
         }
 
-
-        public void TryHide()
-        {
-            RaycastHit2D[] touchedTriggers = new RaycastHit2D[3];
-            this.PlayerCollider.Cast(
-                direction: Vector2.zero, 
-                results: touchedTriggers, 
-                distance: 0, 
-                ignoreSiblingColliders: true);
-            foreach (RaycastHit2D trigger in touchedTriggers)
-            {
-                if (trigger.transform == null)
-                    continue;
-                
-                HidingSpot hidingSpot = trigger.transform.GetComponent<HidingSpot>();
-                if (hidingSpot != null
-                    && !hidingSpot.InUse)
-                {
-                    Debug.Log($"Hiding behind: {hidingSpot.name}");
-                    hidingSpot.Hide(this);
-                    return;
-                }
-            }
-        }
-
-
-        public void TryUnhide()
-        {
-            RaycastHit2D[] touchedTriggers = new RaycastHit2D[3];
-            this.PlayerCollider.Cast(
-                direction: Vector2.zero, 
-                results: touchedTriggers, 
-                distance: 0, 
-                ignoreSiblingColliders: true);
-            foreach (RaycastHit2D trigger in touchedTriggers)
-            {
-                if (trigger.transform == null)
-                    continue;
-                
-                HidingSpot hidingSpot = trigger.transform.GetComponent<HidingSpot>();
-                if (hidingSpot != null
-                    && hidingSpot.InUse)
-                {
-                    Debug.Log($"Stopped hiding behind: {hidingSpot.name}");
-                    hidingSpot.UnHide(this);
-                    return;
-                }
-            }
-        }
-
-
         public void TryPickUpItem()
         {
             RaycastHit2D[] touchedTriggers = new RaycastHit2D[3];
