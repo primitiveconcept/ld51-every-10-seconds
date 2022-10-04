@@ -13,17 +13,32 @@ namespace LD51
 
         [SerializeField]
         private List<string> flags;
+        private CharacterAnimation _characterAnimation;
 
+        private Collider2D _collider;
         private SimpleMovement _movement;
         private Animator _playerAnimator;
-        private Collider2D _collider;
         private SpriteRenderer _spriteRenderer;
 
+        public bool IsCrawling { get; set; }
         public bool JustEnteredDoor { get; set; }
 
         public List<string> KeyItems
         {
             get { return this.keyItems; }
+        }
+
+        private CharacterAnimation CharacterAnimation
+        {
+            get
+            {
+#if UNITY_EDITOR
+                // Lazy instantiation for Editor tools only -- otherwise, handled in Awake
+                if (this._characterAnimation == null)
+                    this._characterAnimation = GetComponentInChildren<CharacterAnimation>(includeInactive: true);
+#endif
+                return this._characterAnimation;
+            }
         }
 
         public SimpleMovement Movement
@@ -117,6 +132,7 @@ namespace LD51
             }
         }
 
+
         public void TryPickUpItem()
         {
             RaycastHit2D[] touchedTriggers = new RaycastHit2D[3];
@@ -139,6 +155,18 @@ namespace LD51
             }
 
             Debug.Log("No pickup found");
+        }
+
+
+        private void UpdateAnimator()
+        {
+            if (this.CharacterAnimation.Animator == null
+                || this.CharacterAnimation.Animator.runtimeAnimatorController == null)
+            {
+                return;
+            }
+
+            this.CharacterAnimation.IsCrawling = this.IsCrawling;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace LD51
         [SerializeField]
         private Vector2 externalForce;
         private Rigidbody2D _rigidbody2D;
-        private CharacterAnimation characterAnimation;
+        private CharacterAnimation _characterAnimation;
 
         private Vector2 facingDirection;
 
@@ -29,10 +29,10 @@ namespace LD51
             {
 #if UNITY_EDITOR
                 // Lazy instantiation for Editor tools only -- otherwise, handled in Awake
-                if (this.characterAnimation == null)
-                    this.characterAnimation = GetComponentInChildren<CharacterAnimation>(includeInactive: true);
+                if (this._characterAnimation == null)
+                    this._characterAnimation = GetComponentInChildren<CharacterAnimation>(includeInactive: true);
 #endif
-                return this.characterAnimation;
+                return this._characterAnimation;
             }
         }
 
@@ -61,7 +61,7 @@ namespace LD51
 
         public void Awake()
         {
-            this.characterAnimation = GetComponentInChildren<CharacterAnimation>(includeInactive: true);
+            this._characterAnimation = GetComponentInChildren<CharacterAnimation>(includeInactive: true);
         }
 
 
