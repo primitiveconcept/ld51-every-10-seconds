@@ -6,9 +6,9 @@ namespace LD51
     [AddComponentMenu("_LD51/Hiding")]
     public partial class Hiding : MonoBehaviour
     {
+        private CharacterAnimation _characterAnimation;
         private PlayerCharacter _player;
 
-        private CharacterAnimation characterAnimation;
         private HidingSpot currentHidingSpot;
         private float originalMovementSpeed;
         private Vector2 originalPlayerPosition;
@@ -29,16 +29,22 @@ namespace LD51
             {
 #if UNITY_EDITOR
                 // Lazy instantiation for Editor tools only -- otherwise, handled in Awake
-                if (this.characterAnimation == null)
-                    this.characterAnimation = GetComponentInChildren<CharacterAnimation>(includeInactive: true);
+                if (this._characterAnimation == null)
+                    this._characterAnimation = GetComponentInChildren<CharacterAnimation>(includeInactive: true);
 #endif
-                return this.characterAnimation;
+                return this._characterAnimation;
             }
         }
 
         private bool IsHiding
         {
             get { return this.currentHidingSpot != null; }
+        }
+
+
+        public void Awake()
+        {
+            this._characterAnimation = GetComponentInChildren<CharacterAnimation>(includeInactive: true);
         }
 
 

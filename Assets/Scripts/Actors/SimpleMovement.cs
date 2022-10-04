@@ -18,8 +18,8 @@ namespace LD51
 
         [SerializeField]
         private Vector2 externalForce;
-        private Rigidbody2D _rigidbody2D;
         private CharacterAnimation _characterAnimation;
+        private Rigidbody2D _rigidbody2D;
 
         private Vector2 facingDirection;
 

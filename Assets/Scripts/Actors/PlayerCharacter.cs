@@ -72,6 +72,18 @@ namespace LD51
         }
 
 
+        public void Awake()
+        {
+            this._characterAnimation = GetComponentInChildren<CharacterAnimation>(includeInactive: true);
+        }
+
+
+        public void Update()
+        {
+            UpdateAnimator();
+        }
+
+
         public IEnumerator ToggleDoorEnteredStatus()
         {
             yield return new WaitForSeconds(0.1f);
@@ -186,6 +198,10 @@ namespace LD51
             public override void OnInspectorGUI()
             {
                 base.OnInspectorGUI();
+                
+                PlayerCharacter playerCharacter = this.target as PlayerCharacter;
+
+                EditorGUILayout.Toggle(nameof(IsCrawling), playerCharacter.IsCrawling);
             }
         }
     }
