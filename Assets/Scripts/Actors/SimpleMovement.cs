@@ -95,6 +95,7 @@ namespace LD51
             
             Vector2 velocity = this.Rigidbody2D.velocity;
             this.CharacterAnimation.IsMoving = velocity.x != 0;
+            this.CharacterAnimation.Speed = this.speed;
             this.CharacterAnimation.FlipX = this.facingDirection.x < 0;
         }
 
