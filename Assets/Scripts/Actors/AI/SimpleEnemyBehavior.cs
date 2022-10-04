@@ -10,7 +10,6 @@ namespace LD51
         private const float DestinationTolerance = 0.01f;
 
         public bool IsLightSensitive = true;
-        public float PingPongDistance = 2f;
         public float NonHostileSpeed = 1f;
         public float HostileSpeed = 2f;
         public float AttackingSpeed = 4f;
