@@ -52,6 +52,7 @@ namespace LD51
 namespace LD51
 {
     using UnityEditor;
+    using UnityEngine;
 
 
     partial class CharacterAnimation
@@ -74,6 +75,13 @@ namespace LD51
 
                 EditorGUILayout.Toggle(nameof(CharacterAnimation.IsMoving), parameters.IsMoving);
                 EditorGUILayout.Toggle(nameof(CharacterAnimation.FlipX), parameters.FlipX);
+                
+                GUILayout.Space(30f);
+
+                if (GUILayout.Button("Create Parameters"))
+                {
+                    // TODO
+                }
             }
         }
     }

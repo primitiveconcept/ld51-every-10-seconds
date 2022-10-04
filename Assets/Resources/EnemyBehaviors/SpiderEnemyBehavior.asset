@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6922435241914effaa4c536f0888994a, type: 3}
-  m_Name: DebugEnemyBehavior
+  m_Name: SpiderEnemyBehavior
   m_EditorClassIdentifier: 
   IsLightSensitive: 1
   PingPongDistance: 2
@@ -19,6 +19,6 @@ MonoBehaviour:
   AttackingSpeed: 4
   Waypoints:
   - Destination: {x: -1.45, y: 0}
-    WaitDuration: 1
+    WaitDuration: 3
   - Destination: {x: 1.74, y: 0}
-    WaitDuration: 1
+    WaitDuration: 3
