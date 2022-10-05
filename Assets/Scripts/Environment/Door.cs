@@ -1,6 +1,5 @@
 namespace LD51
 {
-    using System;
     using UnityEngine;
     using UnityEngine.Events;
 
@@ -75,34 +74,35 @@ namespace LD51
             if (!this.ActivateOnContact)
                 return;
 
-            PlayerCharacter player = col.GetComponent<PlayerCharacter>();
-            if (player != null
-                && !player.JustEnteredDoor)
+            ICanEnterDoors activator = col.GetComponent<ICanEnterDoors>();
+            if (activator != null
+                && !activator.JustEnteredDoor)
             {
-                Activate(player);
+                Activate(activator);
             }
         }
 
 
-        public void Activate(PlayerCharacter player)
+        public void Activate(ICanEnterDoors activator)
         {
-            if (!string.IsNullOrEmpty(this.RequiredKey)
-                && !player.KeyItems.Contains(this.RequiredKey))
+            if (activator is PlayerCharacter playerCharacter)
             {
-                DenyEntry();
-                return;
+                if (!string.IsNullOrEmpty(this.RequiredKey)
+                    && !playerCharacter.KeyItems.Contains(this.RequiredKey))
+                {
+                    DenyEntry();
+                    return;
+                }    
             }
             
             this.OnActivated.Invoke();
 
-            Enter(player);
+            Enter(activator);
         }
 
 
-        private void Enter(PlayerCharacter player)
+        private void Enter(ICanEnterDoors activator)
         {
-            
-            
             if (this.TargetObject == null)
             {
                 Debug.LogError("You forgot to assign TargetObject for this door!");
@@ -115,14 +115,16 @@ namespace LD51
                 Debug.LogError("You forgot to parent the TargetObject under a Room object!");
             }
 
-            float playerFeetOffset = player.Collider.bounds.extents.y;
+            float feetOffset = activator.Collider.bounds.extents.y;
             Vector3 targetPosition = GetTargetPosition();
-            player.transform.position = new Vector2(
+            activator.transform.position = new Vector2(
                 targetPosition.x,
-                targetPosition.y + playerFeetOffset);
-            player.JustEnteredDoor = true;
-            player.StartCoroutine(player.ToggleDoorEnteredStatus());
-            room.RefocusCamera();
+                targetPosition.y + feetOffset);
+            activator.JustEnteredDoor = true;
+            activator.StartCoroutine(Coroutines.ToggleDoorEnteredStatus(activator));
+            
+            if (activator is PlayerCharacter)
+                room.RefocusCamera();
         }
 
 

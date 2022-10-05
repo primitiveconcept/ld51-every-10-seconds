@@ -11,14 +11,19 @@ namespace LD51
         private static string MovementAxis = "Horizontal";
         private static string PickupButton = "Pickup";
         private static string InteractButton = "Interact";
+        private static string FlashlightButton = "Flashlight";
 
         public UnityEvent WhileLeftPressed;
         public UnityEvent WhileRightPressed;
+        
         public UnityEvent OnPickupPressed;
+        
         public UnityEvent OnInteractPressed;
         public UnityEvent OnInteractReleased;
-        
-        
+
+        public UnityEvent OnFlashlightPressed;
+        public UnityEvent OnFlashlightReleased;
+
         public bool LeftHeld
         {
             get { return Input.GetAxisRaw(MovementAxis) < 0; }
@@ -36,29 +41,30 @@ namespace LD51
 
         public bool PickupPressed
         {
-            get
-            {
-                return Input.GetButtonDown(PickupButton);
-            }
+            get { return Input.GetButtonDown(PickupButton); }
         }
 
         public bool InteractPressed
         {
-            get
-            {
-                return Input.GetButtonDown(InteractButton);
-            }
+            get { return Input.GetButtonDown(InteractButton); }
         }
 
         public bool InteractReleased
         {
-            get
-            {
-                return Input.GetButtonUp(InteractButton);
-            }
+            get { return Input.GetButtonUp(InteractButton); }
         }
 
-        
+        public bool FlashlightPressed
+        {
+            get { return Input.GetButtonDown(FlashlightButton); }
+        }
+
+        public bool FlashlightReleased
+        {
+            get { return Input.GetButtonUp(FlashlightButton); }
+        }
+
+
         public void Update()
         {
             if (this.LeftHeld)
@@ -73,6 +79,11 @@ namespace LD51
             
             if (this.PickupPressed)
                 this.OnPickupPressed.Invoke();
+
+            if (this.FlashlightPressed)
+                this.OnFlashlightPressed.Invoke();
+            if (this.FlashlightReleased)
+                this.OnFlashlightReleased.Invoke();
         }
     }
 }

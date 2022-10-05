@@ -21,8 +21,26 @@ namespace LD51
         private CharacterAnimation _characterAnimation;
         private Rigidbody2D _rigidbody2D;
 
-        private Vector2 facingDirection;
+        private float facingDirection;
 
+        
+        public float FacingDirection
+        {
+            get { return this.facingDirection; }
+        }
+
+        public float Speed
+        {
+            get { return this.speed; }
+            set { this.speed = value; }
+        }
+
+        public bool Locked
+        {
+            get { return this.locked; }
+            set { this.locked = value; }
+        }
+        
         private CharacterAnimation CharacterAnimation
         {
             get
@@ -46,19 +64,7 @@ namespace LD51
             }
         }
 
-        public float Speed
-        {
-            get { return this.speed; }
-            set { this.speed = value; }
-        }
-
-        public bool Locked
-        {
-            get { return this.locked; }
-            set { this.locked = value; }
-        }
-
-
+       
         public void Awake()
         {
             this._characterAnimation = GetComponentInChildren<CharacterAnimation>(includeInactive: true);
@@ -68,7 +74,7 @@ namespace LD51
         public void Update()
         {
             if (this.Rigidbody2D.velocity.x != 0)
-                this.facingDirection = this.Rigidbody2D.velocity.normalized;
+                this.facingDirection = this.Rigidbody2D.velocity.normalized.x;
             
             if (this.CharacterAnimation != null)
                 UpdateAnimator();
@@ -96,7 +102,7 @@ namespace LD51
             Vector2 velocity = this.Rigidbody2D.velocity;
             this.CharacterAnimation.IsMoving = velocity.x != 0;
             this.CharacterAnimation.Speed = this.speed;
-            this.CharacterAnimation.FlipX = this.facingDirection.x < 0;
+            this.CharacterAnimation.FlipX = this.facingDirection < 0;
         }
 
 

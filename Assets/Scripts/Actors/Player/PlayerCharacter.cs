@@ -2,43 +2,39 @@ namespace LD51
 {
     using System.Collections;
     using System.Collections.Generic;
+    using LD51;
     using UnityEngine;
 
 
     [AddComponentMenu("_LD51/Player Character")]
-    public partial class PlayerCharacter : MonoBehaviour
+    public partial class PlayerCharacter : MonoBehaviour,
+                                           ICanEnterDoors
     {
         [SerializeField]
         private List<string> keyItems;
 
         [SerializeField]
         private List<string> flags;
+        
         private CharacterAnimation _characterAnimation;
-
         private Collider2D _collider;
         private SimpleMovement _movement;
         private Animator _playerAnimator;
         private SpriteRenderer _spriteRenderer;
 
+        public bool IsSpotted { get; set; }
         public bool IsCrawling { get; set; }
+        
         public bool JustEnteredDoor { get; set; }
 
         public List<string> KeyItems
         {
             get { return this.keyItems; }
         }
-
-        private CharacterAnimation CharacterAnimation
+        
+        public bool WillEnterDoors
         {
-            get
-            {
-#if UNITY_EDITOR
-                // Lazy instantiation for Editor tools only -- otherwise, handled in Awake
-                if (this._characterAnimation == null)
-                    this._characterAnimation = GetComponentInChildren<CharacterAnimation>(includeInactive: true);
-#endif
-                return this._characterAnimation;
-            }
+            get { return true; }
         }
 
         public SimpleMovement Movement
@@ -61,6 +57,7 @@ namespace LD51
             }
         }
 
+
         public SpriteRenderer SpriteRenderer
         {
             get
@@ -68,6 +65,19 @@ namespace LD51
                 if (this._spriteRenderer == null)
                     this._spriteRenderer = GetComponentInChildren<SpriteRenderer>(includeInactive: true);
                 return this._spriteRenderer;
+            }
+        }
+        
+        private CharacterAnimation CharacterAnimation
+        {
+            get
+            {
+#if UNITY_EDITOR
+                // Lazy instantiation for Editor tools only -- otherwise, handled in Awake
+                if (this._characterAnimation == null)
+                    this._characterAnimation = GetComponentInChildren<CharacterAnimation>(includeInactive: true);
+#endif
+                return this._characterAnimation;
             }
         }
 
@@ -84,11 +94,7 @@ namespace LD51
         }
 
 
-        public IEnumerator ToggleDoorEnteredStatus()
-        {
-            yield return new WaitForSeconds(0.1f);
-            this.JustEnteredDoor = false;
-        }
+        
 
 
         public void AddFlag(string flag)
@@ -201,7 +207,7 @@ namespace LD51
                 
                 PlayerCharacter playerCharacter = this.target as PlayerCharacter;
 
-                EditorGUILayout.Toggle(nameof(IsCrawling), playerCharacter.IsCrawling);
+                EditorGUILayout.Toggle(nameof(PlayerCharacter.IsCrawling), playerCharacter.IsCrawling);
             }
         }
     }

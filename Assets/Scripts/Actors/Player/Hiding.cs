@@ -125,7 +125,7 @@ namespace LD51
         }
 
 
-        public void Hide(HidingSpot hidingSpot)
+        private void Hide(HidingSpot hidingSpot)
         {
             // Center player on object
             if (hidingSpot.RepositionPlayerWhileHiding)

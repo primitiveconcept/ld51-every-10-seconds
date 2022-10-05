@@ -10,6 +10,7 @@ namespace LD51
         private static readonly int IsMovingIndex = Animator.StringToHash("IsMoving");
         private static readonly int IsHidingIndex = Animator.StringToHash("IsHiding");
         private static readonly int IsCrawlingIndex = Animator.StringToHash("IsCrawling");
+        private static readonly int IsUsingFlashlightIndex = Animator.StringToHash("IsUsingFlashlight");
         private static readonly int SpeedIndex = Animator.StringToHash("Speed");
 
         private Animator _animator;
@@ -64,6 +65,12 @@ namespace LD51
             get { return this.SpriteRenderer.flipX; }
             set { this.SpriteRenderer.flipX = value; }
         }
+
+        public bool IsUsingFlashlight
+        {
+            get { return this.Animator.GetBool(IsUsingFlashlightIndex); }
+            set { this.Animator.SetBool(IsUsingFlashlightIndex, value); }
+        }
     }
 }
 
@@ -91,10 +98,13 @@ namespace LD51
                 {
                     return;
                 }
-                    
-
-                EditorGUILayout.Toggle(nameof(IsMoving), parameters.IsMoving);
-                EditorGUILayout.Toggle(nameof(FlipX), parameters.FlipX);
+                
+                EditorGUILayout.Toggle(nameof(CharacterAnimation.FlipX), parameters.FlipX);
+                EditorGUILayout.Toggle(nameof(CharacterAnimation.IsMoving), parameters.IsMoving);
+                
+                parameters.IsUsingFlashlight = EditorGUILayout.Toggle(nameof(CharacterAnimation.IsUsingFlashlight), parameters.IsUsingFlashlight);
+                parameters.IsHiding = EditorGUILayout.Toggle(nameof(CharacterAnimation.IsHiding), parameters.IsHiding);
+                parameters.IsCrawling = EditorGUILayout.Toggle(nameof(CharacterAnimation.IsCrawling), parameters.IsCrawling);
                 
                 GUILayout.Space(30f);
 

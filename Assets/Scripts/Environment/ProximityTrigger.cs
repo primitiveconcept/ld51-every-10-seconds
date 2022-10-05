@@ -68,7 +68,7 @@ namespace LD51
             }
 
             Vector3 targetPosition = targetTransform.position;
-            Game.PlayerCharacter.transform.position = targetPosition;
+            Game.FindPlayer().transform.position = targetPosition;
             room.RefocusCamera();
         }
     }

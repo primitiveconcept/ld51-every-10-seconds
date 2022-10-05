@@ -63,11 +63,7 @@ namespace LD51
             }
         }
 
-        public static PlayerCharacter PlayerCharacter
-        {
-            get { return FindObjectOfType<PlayerCharacter>(); }
-        }
-
+        
         private static Game Instance
         {
             get

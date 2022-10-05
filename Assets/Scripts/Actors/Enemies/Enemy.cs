@@ -5,23 +5,33 @@ namespace LD51
     using UnityEngine.Events;
 
 
-    public partial class Enemy : MonoBehaviour
+    public partial class Enemy : MonoBehaviour,
+                                 ICanEnterDoors
     {
-        public EnemyBehavior Behavior; 
-
-        public bool KillsOnContact;
-
-        public UnityEvent OnKilled;
+        public EnemyBehavior Behavior;
+        public bool KillsPlayerOnContact;
+        public List<string> Flags;
+        public UnityEvent OnLit;
+        public UnityEvent OnBecameUnlit;
 
         [SerializeField]
-        private List<string> flags;
+        private bool willEnterDoors;
+
         private Collider2D _collider;
         private SimpleMovement _movement;
         private Animator _playerAnimator;
         private SpriteRenderer _spriteRenderer;
 
         private Vector2 startingPosition;
+        private bool suspendBehavior;
 
+        public bool IsLit { get; private set; }
+
+        public bool WillEnterDoors
+        {
+            get { return this.willEnterDoors; }
+            set { this.willEnterDoors = value; }
+        }
 
         public Vector2 StartingPosition
         {
@@ -75,13 +85,14 @@ namespace LD51
 
         public void Update()
         {
-            this.Behavior.Process(this);
+            if (!this.suspendBehavior)
+                this.Behavior.Process(this);
         }
 
 
         public void OnCollisionEnter2D(Collision2D other)
         {
-            if (this.KillsOnContact)
+            if (this.KillsPlayerOnContact)
             {
                 PlayerCharacter playerCharacter = other.gameObject.GetComponent<PlayerCharacter>();
                 if (playerCharacter == null)
@@ -106,40 +117,86 @@ namespace LD51
         }
 
 
-        public void Kill()
+        public bool JustEnteredDoor { get; set; }
+
+
+        internal void GetLit()
         {
-            this.OnKilled.Invoke();
-            this.gameObject.SetActive(false);
+            this.IsLit = true;
+            this.OnLit.Invoke();
+        }
+
+
+        internal void GetUnlit()
+        {
+            this.IsLit = false;
+            this.OnBecameUnlit.Invoke();
+        }
+
+
+        public void KillAfter(float duration)
+        {
+            StartCoroutine(Coroutines.InvokeAfterDelay(
+                duration: duration, 
+                action: () => this.gameObject.SetActive(false)));
+        }
+
+
+        public void FleeFromPlayer(float duration)
+        {
+            this.suspendBehavior = true;
+            Transform player = Game.FindPlayer().transform;
+
+            StartCoroutine(
+                Coroutines.InvokeAfterDelay(
+                    duration: duration,
+                    action: () => this.suspendBehavior = false));
+            StartCoroutine(
+                Coroutines.InvokeRepeatingUntil(
+                    duration: duration,
+                    repeatingAction: () =>
+                        {
+                            if (player.position.x < this.transform.position.x)
+                                this.Movement.MoveRight();
+                            else
+                                this.Movement.MoveLeft();
+                        }));
+        }
+
+
+        public void Stun(float duration)
+        {
+            
         }
 
 
         public void AddFlag(string flag)
         {
-            if (this.flags.Contains(flag))
+            if (this.Flags.Contains(flag))
             {
                 Debug.LogWarning($"Player already has flag: {flag}");
                 return;
             }
 
-            this.flags.Add(flag);
+            this.Flags.Add(flag);
         }
 
 
         public void RemoveFlag(string flag)
         {
-            if (!this.flags.Contains("flag"))
+            if (!this.Flags.Contains("flag"))
             {
                 Debug.LogWarning($"Tried to remove flag player doesn't have: {flag}");
                 return;
             }
 
-            this.flags.Remove(flag);
+            this.Flags.Remove(flag);
         }
 
 
         public bool HasFlag(string flag)
         {
-            return this.flags.Contains(flag);
+            return this.Flags.Contains(flag);
         }
     }
 }
@@ -159,6 +216,9 @@ namespace LD51
             public override void OnInspectorGUI()
             {
                 base.OnInspectorGUI();
+                Enemy enemy = this.target as Enemy;
+                enemy.IsLit = EditorGUILayout.Toggle(nameof(Enemy.IsLit), enemy.IsLit);
+                enemy.suspendBehavior = EditorGUILayout.Toggle(nameof(Enemy.suspendBehavior), enemy.suspendBehavior);
             }
         }
     }
