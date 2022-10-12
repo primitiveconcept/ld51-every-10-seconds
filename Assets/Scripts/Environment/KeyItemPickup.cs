@@ -1,5 +1,6 @@
 namespace LD51
 {
+    using System;
     using UnityEngine;
 
 
@@ -11,6 +12,18 @@ namespace LD51
             Debug.Log($"Picked up key item: {this.name}");
             player.KeyItems.Add(this.name);
             Destroy(this.gameObject);
+        }
+
+
+        public void OnTriggerStay2D(Collider2D other)
+        {
+            this.TryShowPrompt(other);
+        }
+
+
+        public void OnTriggerExit2D(Collider2D other)
+        {
+            this.TryHidePrompt(other);
         }
     }
 }

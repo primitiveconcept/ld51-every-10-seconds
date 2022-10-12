@@ -82,6 +82,30 @@ namespace LD51
             }
         }
 
+        public void OnTriggerStay2D(Collider2D other)
+        {
+            if (this.ActivateOnContact)
+                return;
+
+            PlayerInput playerInput = other.GetComponent<PlayerInput>();
+            if (playerInput == null)
+                return;
+            
+            playerInput.ShowInteractionPrompt();
+        }
+        
+        public void OnTriggerExit2D(Collider2D other)
+        {
+            if (this.ActivateOnContact)
+                return;
+            
+            PlayerInput playerInput = other.GetComponent<PlayerInput>();
+            if (playerInput == null)
+                return;
+            
+            playerInput.HidePrompt();
+        }
+        
 
         public void Activate(ICanEnterDoors activator)
         {
