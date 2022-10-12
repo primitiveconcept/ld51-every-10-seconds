@@ -13,6 +13,14 @@ namespace LD51
         private static string InteractButton = "Interact";
         private static string FlashlightButton = "Flashlight";
 
+        [SerializeField]
+        private SpriteRenderer captionIcon;
+
+        [Header("Prompts")]
+        public Sprite InteractIcon;
+        public Sprite PickupIcon;
+        public Sprite FlashlightIcon;
+
         public UnityEvent WhileLeftPressed;
         public UnityEvent WhileRightPressed;
         
@@ -65,6 +73,32 @@ namespace LD51
         }
 
 
+        public void ShowInteractionPrompt()
+        {
+            this.captionIcon.sprite = this.InteractIcon;
+            this.captionIcon.gameObject.SetActive(true);
+        }
+        
+        public void ShowPickupPrompt()
+        {
+            this.captionIcon.sprite = this.PickupIcon;
+            this.captionIcon.gameObject.SetActive(true);
+        }
+        
+        public void ShowFlashlightPrompt()
+        {
+            this.captionIcon.sprite = this.FlashlightIcon;
+            this.captionIcon.gameObject.SetActive(true);
+        }
+
+
+        public void HidePrompt()
+        {
+            this.captionIcon.sprite = null;
+            this.captionIcon.gameObject.SetActive(false);
+        }
+        
+        
         public void Update()
         {
             if (this.LeftHeld)

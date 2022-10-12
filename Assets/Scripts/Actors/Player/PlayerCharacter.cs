@@ -15,12 +15,15 @@ namespace LD51
 
         [SerializeField]
         private List<string> flags;
-        
+
+        [SerializeField]
+        private SpriteRenderer spriteRenderer;
+
         private CharacterAnimation _characterAnimation;
         private Collider2D _collider;
         private SimpleMovement _movement;
         private Animator _playerAnimator;
-        private SpriteRenderer _spriteRenderer;
+        
 
         public bool IsSpotted { get; set; }
         public bool IsCrawling { get; set; }
@@ -56,18 +59,13 @@ namespace LD51
                 return this._collider;
             }
         }
-
-
+        
         public SpriteRenderer SpriteRenderer
         {
-            get
-            {
-                if (this._spriteRenderer == null)
-                    this._spriteRenderer = GetComponentInChildren<SpriteRenderer>(includeInactive: true);
-                return this._spriteRenderer;
-            }
+            get { return this.spriteRenderer; }
         }
-        
+
+
         private CharacterAnimation CharacterAnimation
         {
             get
