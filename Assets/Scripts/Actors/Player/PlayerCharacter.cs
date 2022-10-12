@@ -23,6 +23,7 @@ namespace LD51
         private Collider2D _collider;
         private SimpleMovement _movement;
         private Animator _playerAnimator;
+        private PlayerInput _input;
         
 
         public bool IsSpotted { get; set; }
@@ -66,6 +67,17 @@ namespace LD51
         }
 
 
+        public PlayerInput Input
+        {
+            get
+            {
+                if (this._input == null)
+                    this._input = GetComponent<PlayerInput>();
+                return this._input;
+            }    
+        }
+
+
         private CharacterAnimation CharacterAnimation
         {
             get
@@ -90,9 +102,6 @@ namespace LD51
         {
             UpdateAnimator();
         }
-
-
-        
 
 
         public void AddFlag(string flag)

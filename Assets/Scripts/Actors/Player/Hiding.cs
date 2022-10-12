@@ -121,6 +121,7 @@ namespace LD51
             this.Player.SpriteRenderer.color = Color.white;
             
             this.Player.Movement.Speed = this.originalMovementSpeed;
+            this.currentHidingSpot.PlayerCharacter = null;
             this.currentHidingSpot = null;
         }
 
@@ -142,7 +143,9 @@ namespace LD51
             this.originalMovementSpeed = this.Player.Movement.Speed;
             this.Player.Movement.Speed = hidingSpot.MovementWhileHiding;
 
+            this.Player.Input.HidePrompt();
             this.currentHidingSpot = hidingSpot;
+            hidingSpot.PlayerCharacter = this.Player;
         }
     }
 }

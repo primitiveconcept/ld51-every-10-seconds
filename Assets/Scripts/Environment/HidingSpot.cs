@@ -1,5 +1,6 @@
 namespace LD51
 {
+    using System;
     using UnityEngine;
 
 
@@ -13,6 +14,7 @@ namespace LD51
 
         private Collider2D _collider;
 
+
         public Collider2D Collider
         {
             get
@@ -21,6 +23,28 @@ namespace LD51
                     this._collider = GetComponent<Collider2D>();
                 return this._collider;
             }
+        }
+
+
+        public void OnTriggerStay2D(Collider2D other)
+        {
+            if (this.PlayerCharacter != null)
+                return;
+            
+            PlayerInput playerInput = other.GetComponent<PlayerInput>();
+            if (playerInput == null)
+                return;
+            
+            playerInput.ShowInteractionPrompt();
+        }
+        
+        public void OnTriggerExit2D(Collider2D other)
+        {
+            PlayerInput playerInput = other.GetComponent<PlayerInput>();
+            if (playerInput == null)
+                return;
+            
+            playerInput.HidePrompt();
         }
     }
 }
