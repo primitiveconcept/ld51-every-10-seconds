@@ -37,18 +37,27 @@ namespace LD51
 
         public void OnTriggerEnter2D(Collider2D other)
         {
+            PlayerCharacter player = other.GetComponent<PlayerCharacter>();
+            if (player == null)
+                return;
             this.OnEntered.Invoke(other);
         }
 
 
         public void OnTriggerExit2D(Collider2D other)
         {
+            PlayerCharacter player = other.GetComponent<PlayerCharacter>();
+            if (player == null)
+                return;
             this.OnExited.Invoke(other);
         }
 
 
         public void OnTriggerStay2D(Collider2D other)
         {
+            PlayerCharacter player = other.GetComponent<PlayerCharacter>();
+            if (player == null)
+                return;
             this.WhileInside.Invoke(other);
         }
 
