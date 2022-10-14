@@ -130,18 +130,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5304339969493297660}
-        m_TargetAssemblyTypeName: LD51.Hiding, GameScripts
-        m_MethodName: TryHide
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   OnInteractReleased:
     m_PersistentCalls:
       m_Calls:

@@ -13,18 +13,6 @@ namespace LD51
             player.KeyItems.Add(this.name);
             Destroy(this.gameObject);
         }
-
-
-        public void OnTriggerStay2D(Collider2D other)
-        {
-            this.TryShowPrompt(other);
-        }
-
-
-        public void OnTriggerExit2D(Collider2D other)
-        {
-            this.TryHidePrompt(other);
-        }
     }
 }
 

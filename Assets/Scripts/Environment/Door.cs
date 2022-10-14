@@ -14,6 +14,12 @@ namespace LD51
         public UnityEvent OnActivated;
 
 
+        public bool ShouldHidePrompt
+        {
+            get { return this.ActivateOnContact; }
+        }
+        
+
         public void OnDrawGizmos()
         {
             Vector2 endpoint = GetTargetPosition();
@@ -72,21 +78,8 @@ namespace LD51
             
             playerInput.HidePrompt();
         }
-
-
-        public void OnTriggerStay2D(Collider2D other)
-        {
-            if (this.ActivateOnContact)
-                return;
-
-            PlayerInput playerInput = other.GetComponent<PlayerInput>();
-            if (playerInput == null)
-                return;
-            
-            playerInput.ShowInteractionPrompt();
-        }
-
-
+        
+        
         public void OnValidate()
         {
             Collider2D collider = this.gameObject.GetComponent<Collider2D>();

@@ -21,24 +21,16 @@ namespace LD51
 
         private CharacterAnimation _characterAnimation;
         private Collider2D _collider;
+        private PlayerInput _input;
         private SimpleMovement _movement;
         private Animator _playerAnimator;
-        private PlayerInput _input;
-        
 
         public bool IsSpotted { get; set; }
         public bool IsCrawling { get; set; }
-        
-        public bool JustEnteredDoor { get; set; }
 
         public List<string> KeyItems
         {
             get { return this.keyItems; }
-        }
-        
-        public bool WillEnterDoors
-        {
-            get { return true; }
         }
 
         public SimpleMovement Movement
@@ -51,21 +43,10 @@ namespace LD51
             }
         }
 
-        public Collider2D Collider
-        {
-            get
-            {
-                if (this._collider == null)
-                    this._collider = GetComponent<Collider2D>();
-                return this._collider;
-            }
-        }
-        
         public SpriteRenderer SpriteRenderer
         {
             get { return this.spriteRenderer; }
         }
-
 
         public PlayerInput Input
         {
@@ -76,7 +57,6 @@ namespace LD51
                 return this._input;
             }    
         }
-
 
         private CharacterAnimation CharacterAnimation
         {
@@ -101,6 +81,25 @@ namespace LD51
         public void Update()
         {
             UpdateAnimator();
+            CheckForInteractions();
+        }
+
+
+        public bool JustEnteredDoor { get; set; }
+
+        public bool WillEnterDoors
+        {
+            get { return true; }
+        }
+
+        public Collider2D Collider
+        {
+            get
+            {
+                if (this._collider == null)
+                    this._collider = GetComponent<Collider2D>();
+                return this._collider;
+            }
         }
 
 
@@ -193,6 +192,39 @@ namespace LD51
 
             this.CharacterAnimation.IsCrawling = this.IsCrawling;
         }
+
+
+        private void CheckForInteractions()
+        {
+            RaycastHit2D[] touchedTriggers = new RaycastHit2D[3];
+            this.Collider.Cast(
+                direction: Vector2.zero, 
+                results: touchedTriggers, 
+                distance: 0, 
+                ignoreSiblingColliders: true);
+            foreach (RaycastHit2D trigger in touchedTriggers)
+            {
+                if (trigger.transform == null)
+                    continue;
+                
+                IPickup pickup = trigger.transform.GetComponent<IPickup>();
+                if (pickup != null)
+                {
+                    this.Input.ShowPickupPrompt();
+                    return;
+                }
+                
+                IInteractable interactable = trigger.transform.GetComponent<IInteractable>();
+                if (interactable != null
+                    && !interactable.ShouldHidePrompt)
+                {
+                    this.Input.ShowInteractionPrompt();
+                    return;
+                }
+            }
+            
+            this.Input.HidePrompt();
+        }
     }
 }
 
@@ -214,7 +246,7 @@ namespace LD51
                 
                 PlayerCharacter playerCharacter = this.target as PlayerCharacter;
 
-                EditorGUILayout.Toggle(nameof(PlayerCharacter.IsCrawling), playerCharacter.IsCrawling);
+                EditorGUILayout.Toggle(nameof(IsCrawling), playerCharacter.IsCrawling);
             }
         }
     }

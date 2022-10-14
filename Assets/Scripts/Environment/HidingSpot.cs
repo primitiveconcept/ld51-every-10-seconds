@@ -5,7 +5,8 @@ namespace LD51
 
 
     [AddComponentMenu("_LD51/Hiding Spot")]
-    public partial class HidingSpot : MonoBehaviour
+    public partial class HidingSpot : MonoBehaviour, 
+                                      IInteractable
     {
         public PlayerCharacter PlayerCharacter;
         public float MovementWhileHiding = 1f;
@@ -25,26 +26,14 @@ namespace LD51
             }
         }
 
-
-        public void OnTriggerStay2D(Collider2D other)
+        public bool ShouldHidePrompt
         {
-            if (this.PlayerCharacter != null)
-                return;
-            
-            PlayerInput playerInput = other.GetComponent<PlayerInput>();
-            if (playerInput == null)
-                return;
-            
-            playerInput.ShowInteractionPrompt();
+            get { return this.PlayerCharacter != null; }
         }
         
-        public void OnTriggerExit2D(Collider2D other)
+        public void Interact(PlayerCharacter player)
         {
-            PlayerInput playerInput = other.GetComponent<PlayerInput>();
-            if (playerInput == null)
-                return;
-            
-            playerInput.HidePrompt();
+            player.GetComponent<Hiding>().TryHide();
         }
     }
 }
