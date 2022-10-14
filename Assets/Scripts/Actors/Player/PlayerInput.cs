@@ -8,10 +8,12 @@ namespace LD51
     [AddComponentMenu("_LD51/Player Input")]
     public partial class PlayerInput : MonoBehaviour
     {
-        private static string MovementAxis = "Horizontal";
-        private static string PickupButton = "Pickup";
-        private static string InteractButton = "Interact";
-        private static string FlashlightButton = "Flashlight";
+        public static string MovementAxis = "Horizontal";
+        public static string PickupButton = "Pickup";
+        public static string InteractButton = "Interact";
+        public static string FlashlightButton = "Flashlight";
+        public static string SubmitButton = "Submit";
+        public static string CancelButton = "Cancel";
 
         [SerializeField]
         private SpriteRenderer captionIcon;
