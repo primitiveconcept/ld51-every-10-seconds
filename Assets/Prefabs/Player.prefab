@@ -120,7 +120,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1770375833228365802}
         m_TargetAssemblyTypeName: LD51.PlayerCharacter, GameScripts
-        m_MethodName: TryDoor
+        m_MethodName: TryInteract
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

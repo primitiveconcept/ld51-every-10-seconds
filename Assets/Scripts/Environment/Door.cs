@@ -5,7 +5,7 @@ namespace LD51
 
 
     [AddComponentMenu("_LD51/Door")]
-    public partial class Door : MonoBehaviour
+    public partial class Door : MonoBehaviour, IInteractable
     {
         public string RequiredKey;
         public string[] RequiredKeys;
@@ -14,18 +14,6 @@ namespace LD51
         public UnityEvent OnActivated;
 
 
-        public Vector2 GetTargetPosition()
-        {
-            Collider2D collider = this.TargetObject.GetComponent<Collider2D>();
-            if (collider == null)
-                return this.TargetObject.transform.position;
-
-            return new Vector2(
-                collider.bounds.center.x,
-                collider.bounds.min.y);
-        }
-        
-        
         public void OnDrawGizmos()
         {
             Vector2 endpoint = GetTargetPosition();
@@ -57,16 +45,6 @@ namespace LD51
                 
             Gizmos.color = previousColor;
         }
-        
-        public void OnValidate()
-        {
-            Collider2D collider = this.gameObject.GetComponent<Collider2D>();
-            if (collider != null
-                && collider.isTrigger != true)
-            {
-                collider.isTrigger = true;
-            }
-        }
 
 
         public void OnTriggerEnter2D(Collider2D col)
@@ -82,18 +60,7 @@ namespace LD51
             }
         }
 
-        public void OnTriggerStay2D(Collider2D other)
-        {
-            if (this.ActivateOnContact)
-                return;
 
-            PlayerInput playerInput = other.GetComponent<PlayerInput>();
-            if (playerInput == null)
-                return;
-            
-            playerInput.ShowInteractionPrompt();
-        }
-        
         public void OnTriggerExit2D(Collider2D other)
         {
             if (this.ActivateOnContact)
@@ -105,7 +72,51 @@ namespace LD51
             
             playerInput.HidePrompt();
         }
-        
+
+
+        public void OnTriggerStay2D(Collider2D other)
+        {
+            if (this.ActivateOnContact)
+                return;
+
+            PlayerInput playerInput = other.GetComponent<PlayerInput>();
+            if (playerInput == null)
+                return;
+            
+            playerInput.ShowInteractionPrompt();
+        }
+
+
+        public void OnValidate()
+        {
+            Collider2D collider = this.gameObject.GetComponent<Collider2D>();
+            if (collider != null
+                && collider.isTrigger != true)
+            {
+                collider.isTrigger = true;
+            }
+        }
+
+
+        public void Interact(PlayerCharacter player)
+        {
+            if (this.ActivateOnContact)
+                return;
+            Activate(player);
+        }
+
+
+        public Vector2 GetTargetPosition()
+        {
+            Collider2D collider = this.TargetObject.GetComponent<Collider2D>();
+            if (collider == null)
+                return this.TargetObject.transform.position;
+
+            return new Vector2(
+                collider.bounds.center.x,
+                collider.bounds.min.y);
+        }
+
 
         public void Activate(ICanEnterDoors activator)
         {

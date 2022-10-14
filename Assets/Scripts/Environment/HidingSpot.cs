@@ -13,7 +13,7 @@ namespace LD51
         public Vector2 HidingPositionOffset = new Vector2(0, 0.01f);
 
         private Collider2D _collider;
-
+        private IInteractable interactableImplementation;
 
         public Collider2D Collider
         {

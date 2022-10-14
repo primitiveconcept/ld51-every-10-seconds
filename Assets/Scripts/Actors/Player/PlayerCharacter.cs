@@ -134,7 +134,7 @@ namespace LD51
         }
 
 
-        public void TryDoor()
+        public void TryInteract()
         {
             RaycastHit2D[] touchedTriggers = new RaycastHit2D[3];
             this.Collider.Cast(
@@ -147,11 +147,11 @@ namespace LD51
                 if (trigger.transform == null)
                     continue;
                 
-                Door door = trigger.transform.GetComponent<Door>();
-                if (door != null)
+                IInteractable interactable = trigger.transform.GetComponent<IInteractable>();
+                if (interactable != null)
                 {
-                    Debug.Log($"Activating door: {door.name}");
-                    door.Activate(this);
+                    Debug.Log($"Interacting with: {interactable.name}");
+                    interactable.Interact(this);
                     return;
                 }
             }
