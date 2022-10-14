@@ -83,7 +83,9 @@ namespace LD51
 namespace LD51
 {
     using UnityEditor;
+    using UnityEditor.Events;
     using UnityEngine;
+    using UnityEngine.Events;
 
 
     partial class Room
@@ -106,6 +108,11 @@ namespace LD51
                 {
                     CreateKeyItemPickup();
                 }
+
+                if (GUILayout.Button("Create Interactable Item"))
+                {
+                    CreateInteractable();
+                }
                 
                 if (GUILayout.Button("Create Door Pair"))
                 {
@@ -115,6 +122,29 @@ namespace LD51
                         ("To Existing Room", CreateDoorToExistingRoom)
                     );
                 }
+            }
+
+
+            private void CreateInteractable()
+            {
+                TextInputPopup.Show(
+                    "Enter item name",
+                    name =>
+                        {
+                            Room room = this.target as Room;
+                            GameObject newItem = new GameObject(name);
+                            newItem.transform.SetParent(room.transform);
+                            newItem.transform.localPosition = Vector3.zero;
+                            SpriteRenderer spriteRenderer = newItem.AddComponent<SpriteRenderer>();
+                            Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprites/_Debug/debug-item.png");
+                            spriteRenderer.sprite = sprite;
+                            BoxCollider2D collider = newItem.AddComponent<BoxCollider2D>();
+                            collider.isTrigger = true;
+                            InteractableTrigger interactableTrigger =
+                                newItem.AddComponent<InteractableTrigger>();
+                            UnityEventTools.AddPersistentListener(interactableTrigger.OnInteract);
+                            Selection.activeGameObject = newItem;
+                        });
             }
 
 

@@ -7,7 +7,7 @@ namespace LD51
     public partial class InteractableTrigger : MonoBehaviour, 
                                                IInteractable
     {
-        public UnityEvent OnInteract;
+        public UnityEvent OnInteract = new UnityEvent();
 
         public bool ShouldHidePrompt { get; set; }
 
