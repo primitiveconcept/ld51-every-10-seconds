@@ -93,28 +93,60 @@ namespace LD51
         [CustomEditor(typeof(Room))]
         public class Inspector : Editor
         {
-            public override void OnInspectorGUI()
+            public void OnSceneGUI()
             {
-                base.OnInspectorGUI();
-                
-                GUILayout.Space(30f);
+                Handles.BeginGUI();
+                {
+                    Rect buttonArea = new Rect(
+                        x: 0f, 
+                        y: Screen.height - 70f, 
+                        width: Screen.width, 
+                        height: Screen.height);
+                    
+                    GUILayout.BeginArea(buttonArea);
+                    {
+                        GUILayout.BeginHorizontal(GUI.skin.textArea);
+                        {
+                            GUILayout.FlexibleSpace();
+                            DrawSceneButtons();
+                            GUILayout.FlexibleSpace();
+                        } GUILayout.EndHorizontal();
+                    } GUILayout.EndArea();
+                } Handles.EndGUI();
+            }
 
-                if (GUILayout.Button("Create Hiding Spot"))
+
+            private void DrawSceneButtons()
+            {
+                GUIStyle labelStyle = new GUIStyle(GUI.skin.label)
+                                          {
+                                              fontStyle = FontStyle.Bold
+                                          };
+                GUIStyle buttonStyle = new GUIStyle(GUI.skin.button)
+                                           {
+                                               wordWrap = true,
+                                               fixedWidth = 90f,
+                                               fontStyle = FontStyle.Bold
+                                           };
+                
+                GUILayout.Label("CREATE:", labelStyle);
+                
+                if (GUILayout.Button( "Hiding Spot", buttonStyle))
                 {
                     CreateHidingSpot();
                 }
-                
-                if (GUILayout.Button("Create Key Item Pickup"))
+            
+                if (GUILayout.Button("Key Item", buttonStyle))
                 {
                     CreateKeyItemPickup();
                 }
 
-                if (GUILayout.Button("Create Interactable Item"))
+                if (GUILayout.Button("Interactable", buttonStyle))
                 {
                     CreateInteractable();
                 }
-                
-                if (GUILayout.Button("Create Door Pair"))
+            
+                if (GUILayout.Button("Doors", buttonStyle))
                 {
                     MultiButtonPopup.Show(
                         "What type of door?",
@@ -123,8 +155,8 @@ namespace LD51
                     );
                 }
             }
-
-
+            
+            
             private void CreateInteractable()
             {
                 TextInputPopup.Show(
