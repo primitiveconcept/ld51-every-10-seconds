@@ -3,7 +3,7 @@ namespace LD51
     using UnityEngine;
 
 
-    [AddComponentMenu("_LD51/Animation Parameters")]
+    [AddComponentMenu("_LD51/Character Animation")]
     public partial class CharacterAnimation : MonoBehaviour
     {
         // Cached keys
@@ -101,6 +101,9 @@ namespace LD51
                 
                 EditorGUILayout.Toggle(nameof(CharacterAnimation.FlipX), parameters.FlipX);
                 EditorGUILayout.Toggle(nameof(CharacterAnimation.IsMoving), parameters.IsMoving);
+
+                if (!this.target.name.Equals("Player"))
+                    return;
                 
                 parameters.IsUsingFlashlight = EditorGUILayout.Toggle(nameof(CharacterAnimation.IsUsingFlashlight), parameters.IsUsingFlashlight);
                 parameters.IsHiding = EditorGUILayout.Toggle(nameof(CharacterAnimation.IsHiding), parameters.IsHiding);

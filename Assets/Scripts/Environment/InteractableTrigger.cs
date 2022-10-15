@@ -4,6 +4,7 @@ namespace LD51
     using UnityEngine.Events;
 
 
+    [AddComponentMenu("_LD51/Interactable Trigger")]
     public partial class InteractableTrigger : MonoBehaviour, 
                                                IInteractable
     {

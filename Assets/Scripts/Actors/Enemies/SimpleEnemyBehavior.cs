@@ -9,11 +9,19 @@ namespace LD51
     {
         private const float DestinationTolerance = 0.01f;
 
+        [Tooltip("Whether presence of light will alter behavior")]
         public bool IsLightSensitive = true;
+        
+        [Tooltip("Speed when not chasing player")]
         public float NonHostileSpeed = 1f;
+        
+        [Tooltip("Speed when alerted to player")]
         public float HostileSpeed = 2f;
+        
+        [Tooltip("Speed while executing an attack")]
         public float AttackingSpeed = 4f;
 
+        [Tooltip("Coordinates to move between sequentially (loops)")]
         public List<Waypoint> Waypoints;
 
         private int currentWaypointIndex;

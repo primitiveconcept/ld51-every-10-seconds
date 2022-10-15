@@ -38,10 +38,7 @@ namespace LD51
             if (!this.panel.activeInHierarchy)
                 return;
 
-            if (Input.GetMouseButton(0)
-                || Input.GetButtonUp(PlayerInput.FlashlightButton)
-                || Input.GetButtonUp(PlayerInput.SubmitButton)
-                || Input.GetButtonUp(PlayerInput.CancelButton))
+            if (Input.anyKeyDown)
             {
                 Hide();
             }
@@ -50,6 +47,7 @@ namespace LD51
 
         public static void Show(string text)
         {
+            Game.FindPlayer().Movement.Locked = true;
             Instance.text.text = text;
             Instance.panel.SetActive(true);
         }
@@ -57,6 +55,7 @@ namespace LD51
 
         public static void Hide()
         {
+            Game.FindPlayer().Movement.Locked = false;
             Instance.text.text = string.Empty;
             Instance.panel.SetActive(false);
         }

@@ -10,12 +10,15 @@ namespace LD51
     public partial class PlayerCharacter : MonoBehaviour,
                                            ICanEnterDoors
     {
+        [Tooltip("Names of items needed to progress")]
         [SerializeField]
         private List<string> keyItems;
 
+        [Tooltip("Miscellaneous data to be stored on the player during runtime.")]
         [SerializeField]
         private List<string> flags;
 
+        [Tooltip("Specifically, the player's avatar sprite (do not confuse with button prompt sprite")]
         [SerializeField]
         private SpriteRenderer spriteRenderer;
 

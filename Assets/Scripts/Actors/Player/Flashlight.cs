@@ -4,6 +4,7 @@ namespace LD51.Player
     using UnityEngine;
 
 
+    [AddComponentMenu("_LD51/Flashlight")]
     public partial class Flashlight : MonoBehaviour
     {
         public float Range;

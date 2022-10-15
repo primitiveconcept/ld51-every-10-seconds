@@ -5,15 +5,26 @@ namespace LD51
     using UnityEngine.Events;
 
 
+    [AddComponentMenu("_LD51/Enemy")]
     public partial class Enemy : MonoBehaviour,
                                  ICanEnterDoors
     {
+        [Tooltip("AI for the enemy")]
         public EnemyBehavior Behavior;
+        
+        [Tooltip("Whether player should die by merely touching monster")]
         public bool KillsPlayerOnContact;
+        
+        [Tooltip("Miscellaneous data to be stored on the monster during runtime.")]
         public List<string> Flags;
+        
+        [Tooltip("Actions to execute upon being hit by light")]
         public UnityEvent OnLit;
+        
+        [Tooltip("Actions to execute upon light no longer hitting monster")]
         public UnityEvent OnBecameUnlit;
 
+        [Tooltip("Whether the monster may move through on-contact doors")]
         [SerializeField]
         private bool willEnterDoors;
 

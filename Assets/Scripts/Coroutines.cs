@@ -23,11 +23,5 @@ namespace LD51
                 yield return 0;
             }
         }
-        
-        public static IEnumerator ToggleDoorEnteredStatus(ICanEnterDoors doorActivator)
-        {
-            yield return new WaitForSeconds(0.1f);
-            doorActivator.JustEnteredDoor = false;
-        }
     }
 }

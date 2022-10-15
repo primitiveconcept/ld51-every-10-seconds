@@ -14,12 +14,6 @@ namespace LD51
         public UnityEvent OnActivated;
 
 
-        public bool ShouldHidePrompt
-        {
-            get { return this.ActivateOnContact; }
-        }
-        
-
         public void OnDrawGizmos()
         {
             Vector2 endpoint = GetTargetPosition();
@@ -53,14 +47,13 @@ namespace LD51
         }
 
 
-        public void OnTriggerEnter2D(Collider2D col)
+        public void OnTriggerEnter2D(Collider2D other)
         {
             if (!this.ActivateOnContact)
                 return;
 
-            ICanEnterDoors activator = col.GetComponent<ICanEnterDoors>();
-            if (activator != null
-                && !activator.JustEnteredDoor)
+            ICanEnterDoors activator = other.GetComponent<ICanEnterDoors>();
+            if (activator != null)
             {
                 Activate(activator);
             }
@@ -78,8 +71,8 @@ namespace LD51
             
             playerInput.HidePrompt();
         }
-        
-        
+
+
         public void OnValidate()
         {
             Collider2D collider = this.gameObject.GetComponent<Collider2D>();
@@ -88,6 +81,12 @@ namespace LD51
             {
                 collider.isTrigger = true;
             }
+        }
+
+
+        public bool ShouldHidePrompt
+        {
+            get { return this.ActivateOnContact; }
         }
 
 
@@ -148,11 +147,39 @@ namespace LD51
             activator.transform.position = new Vector2(
                 targetPosition.x,
                 targetPosition.y + feetOffset);
-            activator.JustEnteredDoor = true;
-            activator.StartCoroutine(Coroutines.ToggleDoorEnteredStatus(activator));
+            
+            if (this.ActivateOnContact)
+                AdjustPosition(activator);
             
             if (activator is PlayerCharacter)
                 room.RefocusCamera();
+        }
+
+
+        private void AdjustPosition(ICanEnterDoors activator)
+        {
+            const float FudgeFactor = 0.25f;
+            
+            SimpleMovement movement = activator.transform.GetComponent<SimpleMovement>();
+            if (movement == null)
+                return;
+
+            Collider2D targetCollider = this.TargetObject.GetComponent<Collider2D>();
+            if (targetCollider == null)
+                return;
+
+            //movement.FacingDirection
+            Vector3 position = activator.transform.position;
+
+            float xAdjustment = (targetCollider.bounds.extents.x 
+                                 + activator.Collider.bounds.extents.x
+                                 + FudgeFactor)
+                                * movement.FacingDirection; 
+            
+            activator.transform.position = new Vector3(
+                position.x + xAdjustment, 
+                position.y, 
+                position.z);
         }
 
 
